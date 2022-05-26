@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "857837890100",
+    "project_id": "aplikasi-catat-uang",
+    "storage_bucket": "aplikasi-catat-uang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857837890100:android:abc5f0f35734467eeb7861",
+        "android_client_info": {
+          "package_name": "com.myapp.catatuang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857837890100-l8j2qtb9ft7mb42dnm1l342l62ero0ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2bOBxv9_LHD2PIUmV8ddxEjD3_L0xUrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857837890100-l8j2qtb9ft7mb42dnm1l342l62ero0ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

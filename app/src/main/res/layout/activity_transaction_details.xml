@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransactionDetails">
+
+    <LinearLayout
+        android:id="@+id/toolbarLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orangePrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="0dp"
+                android:background="@drawable/ic_baseline_clear_24"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaction Details"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppinsbold"
+                android:paddingTop="5dp"
+                android:paddingLeft="28dp"
+                android:textColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/updateData"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_baseline_edit_24"
+                android:layout_marginLeft="76dp"
+                />
+
+            <ImageButton
+                android:id="@+id/deleteData"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_baseline_delete_24"
+                android:layout_marginLeft="20dp"
+                />
+
+        </Toolbar>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/amountRelative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarLinear"
+        android:background="@color/orangeSecondary">
+
+        <TextView
+            android:id="@+id/tvAmountDetails"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center"
+            android:text="99999.99"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTypeDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAmountDetails"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center"
+            android:text="Expense/Income"
+            android:textColor="#606060"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/amountRelative"
+        >
+
+        <TextView
+            android:id="@+id/tvTitleDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:drawableStart="@drawable/ic_baseline_title_36"
+            android:drawablePadding="25dp"
+            android:gravity="center_vertical"
+            android:text="Title"
+            android:textColor="#606060"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvCategoryDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitleDetails"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_36"
+            android:drawablePadding="25dp"
+            android:gravity="center_vertical"
+            android:text="Category"
+            android:textColor="#606060"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvDateDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCategoryDetails"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:drawableStart="@drawable/ic_baseline_calendar_month_36"
+            android:drawablePadding="25dp"
+            android:gravity="center_vertical"
+            android:text="01/01/2002"
+            android:textColor="#606060"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/noteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDateDetails"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:drawableStart="@drawable/ic_baseline_notes_24"
+            android:drawablePadding="25dp"
+            android:gravity="center_vertical"
+            android:text="Note :"
+            android:textColor="#606060"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvNoteDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noteTitle"
+            android:layout_marginLeft="82dp"
+            android:layout_marginRight="20dp"
+            android:drawablePadding="25dp"
+            android:gravity="center_vertical"
+            android:text="Notes here..."
+            android:textColor="#606060"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
