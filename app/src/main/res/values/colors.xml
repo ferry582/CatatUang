@@ -12,4 +12,6 @@
     <color name="orangeSecondary">#ffbf69</color>
     <color name="toscaWhite">#cbf3f0</color>
     <color name="greenIncome">#489E4C</color>
+    <color name="redExpense">#D11818</color>
+    <color name="toscaDarker">#03A5A3</color>
 </resources>

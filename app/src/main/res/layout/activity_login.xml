@@ -85,15 +85,18 @@
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@id/forgotPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_button"
         android:backgroundTint="#2ec4b6"
         android:text="LOGIN"
         android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="30dp"/>
 
     <TextView
         android:id="@+id/createAccount"

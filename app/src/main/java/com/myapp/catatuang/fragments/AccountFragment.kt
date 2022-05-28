@@ -1,6 +1,7 @@
 package com.myapp.catatuang.fragments
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,6 +13,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.util.Pair
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -21,6 +29,7 @@ import com.myapp.catatuang.*
 import com.myapp.catatuang.R
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,6 +112,7 @@ class AccountFragment : Fragment() {
 
         Handler().postDelayed({ //to make showRecapText() start after showReport(), otherwise the showRecapText just show 0.0 value
             showRecapText()
+            setupPieChart()
         }, 200)
 
         //---date range picker ---
@@ -136,6 +146,7 @@ class AccountFragment : Fragment() {
 
                 Handler().postDelayed({
                     showRecapText()
+                    setupPieChart()
                 }, 200)
             }
         }
@@ -151,6 +162,43 @@ class AccountFragment : Fragment() {
         tvNetAmount.text = "Net Amount : ${amountIncome+amountExpense}"
         tvAmountExpense.text = "Expense Amount : $amountExpense"
         tvAmountIncome.text = "Income Amount : $amountIncome"
+    }
+
+    private fun setupPieChart(){
+        //Pie Chart Library Dependency : https://github.com/PhilJay/MPAndroidChart
+
+        val pieChart: PieChart = requireView().findViewById(R.id.pieChart)
+
+        val pieEntries = arrayListOf<PieEntry>()
+        pieEntries.add(PieEntry(amountExpense.toFloat()*-1, "Expense"))
+        pieEntries.add(PieEntry(amountIncome.toFloat(), "Income"))
+
+        //pie chart animation
+        pieChart.animateXY(500, 500)
+
+        //setup pie chart colors
+        val pieDataSet = PieDataSet(pieEntries, "Pie Chart")
+        pieDataSet.setColors(
+            resources.getColor(R.color.toscaSecondary),
+            resources.getColor(R.color.toscaDarker)
+        )
+
+        pieChart.description.isEnabled = false
+        pieChart.legend.isEnabled = false
+        pieChart.setUsePercentValues(true)
+        pieChart.setEntryLabelTextSize(12f)
+        pieChart.setEntryLabelColor(Color.WHITE)
+        pieChart.holeRadius = 46f
+
+        // Setup pie data
+        val pieData = PieData(pieDataSet)
+        pieData.setDrawValues(true) //enable the value on each pieEntry
+        pieData.setValueFormatter(PercentFormatter(pieChart))
+        pieData.setValueTextSize(12f)
+        pieData.setValueTextColor(Color.WHITE)
+
+        pieChart.data = pieData
+        pieChart.invalidate()
     }
 
     private fun showReport(dateStart: Long, dateEnd: Long) { //show and calculate transaction recap

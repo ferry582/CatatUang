@@ -51,121 +51,134 @@
                 android:textColor="#333333"
                 android:textSize="15sp" />
 
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/up"
-            android:layout_marginTop="-1dp">
-
-
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonDate"
-                android:layout_width="match_parent"
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:layout_below="@id/tvEmail"
                 android:layout_centerHorizontal="true"
-                android:layout_marginHorizontal="70dp"
-                android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_button"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:text="Select date"
-                android:textColor="@color/white"
-                android:textSize="13dp" />
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/reportCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/buttonDate"
-                android:layout_marginHorizontal="10dp"
-                android:orientation="vertical"
-                app:cardCornerRadius="10dp">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#151B1B1B"
-                    android:gravity="center"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/reportTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:gravity="center"
-                        android:text="Transactions Recap "
-                        android:textColor="#333333"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/line"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_below="@+id/reportTitle"
-                        android:background="#BCBCBC" />
-
-                    <TextView
-                        android:id="@+id/netAmount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/line"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:text="Net Amount :  -"
-                        android:textColor="#333333"
-                        android:textSize="13dp" />
-
-                    <TextView
-                        android:id="@+id/expenseAmount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/netAmount"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:text="Expense Amount :  -"
-                        android:textColor="#D11818"
-                        android:textSize="13dp" />
-
-                    <TextView
-                        android:id="@+id/incomeAmount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/expenseAmount"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:text="Income Amount :  -"
-                        android:textColor="#4CAF50"
-                        android:textSize="13dp" />
-                </RelativeLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-
-            <Button
-                android:id="@+id/btnLogout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/toscaSecondary"
                 android:text="Log Out"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:backgroundTint="#E4414D" />
+
 
         </RelativeLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/up">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-1dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginHorizontal="70dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/rounded_button"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Select date"
+                    android:textColor="@color/white"
+                    android:textSize="13dp" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/reportCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/buttonDate"
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="vertical"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#151B1B1B"
+                        android:gravity="center"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/reportTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:gravity="center"
+                            android:text="Transactions Recap "
+                            android:textColor="#333333"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/line"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/reportTitle"
+                            android:background="#BCBCBC" />
+
+                        <TextView
+                            android:id="@+id/netAmount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/line"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="Net Amount :  -"
+                            android:textColor="#333333"
+                            android:textSize="13dp" />
+
+                        <TextView
+                            android:id="@+id/expenseAmount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/netAmount"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="Expense Amount :  -"
+                            android:textColor="#D11818"
+                            android:textSize="13dp" />
+
+                        <TextView
+                            android:id="@+id/incomeAmount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/expenseAmount"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="Income Amount :  -"
+                            android:textColor="#4CAF50"
+                            android:textSize="13dp" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
+                    android:layout_width="361dp"
+                    android:layout_height="260dp"
+                    android:layout_below="@id/reportCard"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="30dp" />
+
+            </RelativeLayout>
+
+        </ScrollView>
 
     </RelativeLayout>
 
