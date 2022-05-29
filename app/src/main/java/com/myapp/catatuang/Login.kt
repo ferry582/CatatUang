@@ -3,15 +3,12 @@ package com.myapp.catatuang
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.myapp.catatuang.databinding.ActivityLoginBinding
 
 class Login : AppCompatActivity() {
 
-    private var tvCreateAccount: TextView? = null
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var binding: ActivityLoginBinding
 
@@ -58,6 +55,7 @@ class Login : AppCompatActivity() {
                 it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK //tujuan flag agar tidak bisa menggunakan back
                 startActivity(it)
             }
+            finish()
         }
     }
 

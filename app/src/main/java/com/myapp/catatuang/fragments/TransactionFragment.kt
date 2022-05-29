@@ -6,17 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import androidx.navigation.fragment.findNavController
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.myapp.catatuang.*
 import com.myapp.catatuang.R
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +35,8 @@ class TransactionFragment : Fragment() {
     private lateinit var tvLoadingData: TextView
     private lateinit var transactionList: ArrayList<TransactionModel>
     private lateinit var dbRef: DatabaseReference
+    private lateinit var visibleOption: Spinner
+    private var selectedOption: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +66,10 @@ class TransactionFragment : Fragment() {
         }
         //--------
 
+        //--visibility option spinner--
+        visibilityOptions()
+        //-----
+
         //--Recycler View transaction items--
         transactionRecyclerView = view.findViewById(R.id.rvTransaction)
         transactionRecyclerView.layoutManager = LinearLayoutManager(this.activity)
@@ -75,6 +79,33 @@ class TransactionFragment : Fragment() {
         transactionList = arrayListOf<TransactionModel>()
 
         getTransactionData()
+        //----
+
+
+    }
+
+    private fun visibilityOptions (){
+        visibleOption = requireView().findViewById(R.id.visibleSpinner) as Spinner
+        val options = arrayOf("All", "Expense", "Income")
+        //visibleOption.adapter = ArrayAdapter<String>(this.requireActivity(),android.R.layout.simple_list_item_1,options)
+        val spinnerAdapter = ArrayAdapter<String>(this.requireActivity(),R.layout.selected_spinner,options)
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1)
+        visibleOption.adapter = spinnerAdapter
+
+        visibleOption.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                when(options[p2]){
+                    "All" -> selectedOption = 1
+                    "Expense" -> selectedOption = 2
+                    "Income" -> selectedOption = 3
+                }
+                getTransactionData()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+        }
     }
 
     private fun getTransactionData() {
@@ -86,15 +117,36 @@ class TransactionFragment : Fragment() {
         if (uid != null) {
             dbRef = FirebaseDatabase.getInstance().getReference(uid)
         }
-        var query: Query = dbRef.orderByChild("invertedDate") //sorting date
+        val query: Query = dbRef.orderByChild("invertedDate") //sorting date descending
         query.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 transactionList.clear()
                 if (snapshot.exists()){
-                    for (transactionSnap in snapshot.children){
-                        val     transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
-                        transactionList.add(transactionData!!)
+                    when (selectedOption) {
+                        1 -> { //all option selected
+                            for (transactionSnap in snapshot.children){
+                                val     transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
+                                transactionList.add(transactionData!!)
+                            }
+                        }
+                        2 -> { //expense option selected
+                            for (transactionSnap in snapshot.children){
+                                val     transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
+                                if (transactionData!!.type == 1){ //expense type
+                                    transactionList.add(transactionData)
+                                }
+                            }
+                        }
+                        3 -> {
+                            for (transactionSnap in snapshot.children){
+                                val     transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
+                                if (transactionData!!.type == 2){ //income type
+                                    transactionList.add(transactionData)
+                                }
+                            }
+                        }
                     }
+
                     val mAdapter = TransactionAdapter(transactionList)
                     transactionRecyclerView.adapter = mAdapter
 

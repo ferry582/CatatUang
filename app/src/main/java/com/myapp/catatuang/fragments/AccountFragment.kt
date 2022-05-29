@@ -4,18 +4,14 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.util.Pair
-import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -76,10 +72,8 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         //---logout button---
-        var btnLogout: Button = view.findViewById(R.id.btnLogout)
+        val btnLogout: Button = view.findViewById(R.id.btnLogout)
         btnLogout.setOnClickListener {
             auth.signOut()
             Intent(this.activity, Login::class.java).also {
@@ -90,15 +84,15 @@ class AccountFragment : Fragment() {
         //------
 
         //---Output Account details from firebase---
-        var tvName: TextView = view.findViewById(R.id.tvName)
-        var tvEmail: TextView = view.findViewById(R.id.tvEmail)
+        val tvName: TextView = view.findViewById(R.id.tvName)
+        val tvEmail: TextView = view.findViewById(R.id.tvEmail)
 
         user?.let {
             // Name and email address
             val email = user!!.email
 
             val splitValue = email?.split("@") //
-            var name = splitValue?.get(0)
+            val name = splitValue?.get(0)
 
             tvName.text = name.toString()
             tvEmail.text = email.toString()
@@ -123,7 +117,7 @@ class AccountFragment : Fragment() {
         dateRangeButton.setOnClickListener { //when date range picker clicked
             // Opens the date range picker with the range of the first day of
             // the month to today selected.
-            var datePicker = MaterialDatePicker.Builder.dateRangePicker()
+            val datePicker = MaterialDatePicker.Builder.dateRangePicker()
                 .setTitleText("Select Date")
                 .setSelection(
                     Pair(
@@ -202,10 +196,10 @@ class AccountFragment : Fragment() {
     }
 
     private fun showReport(dateStart: Long, dateEnd: Long) { //show and calculate transaction recap
-        var amountExpenseTemp: Double = 0.0
-        var amountIncomeTemp: Double = 0.0
+        var amountExpenseTemp = 0.0
+        var amountIncomeTemp = 0.0
 
-        var transactionList: ArrayList<TransactionModel> = arrayListOf<TransactionModel>()
+        val transactionList: ArrayList<TransactionModel> = arrayListOf<TransactionModel>()
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -243,9 +237,9 @@ class AccountFragment : Fragment() {
 
 
     private fun convertDate(dateStart: Long, dateEnd: Long): String {
-        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val date1: Date = Date(dateStart)
-        val date2: Date = Date(dateEnd)
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        val date1 = Date(dateStart)
+        val date2 = Date(dateEnd)
         val result1 = simpleDateFormat.format(date1)
         val result2 = simpleDateFormat.format(date2)
         return "$result1 - $result2"

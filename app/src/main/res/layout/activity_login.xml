@@ -92,11 +92,11 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="#2ec4b6"
+        android:paddingHorizontal="30dp"
         android:text="LOGIN"
         android:textColor="@color/white"
         android:textSize="15sp"
-        android:textStyle="bold"
-        android:paddingHorizontal="30dp"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/createAccount"

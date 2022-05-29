@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.myapp.catatuang.R.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -44,8 +43,8 @@ class TransactionAdapter (private val transactionList: ArrayList<TransactionMode
 
         holder.tvCategory.text = currentTransaction.category
 
-        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val result: Date = Date(currentTransaction.date!!)
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        val result = Date(currentTransaction.date!!)
         holder.tvDate.text = simpleDateFormat.format(result)
     }
 

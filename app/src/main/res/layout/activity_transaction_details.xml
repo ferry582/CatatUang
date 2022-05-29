@@ -38,22 +38,25 @@
                 android:fontFamily="@font/poppinsbold"
                 android:paddingTop="5dp"
                 android:paddingLeft="28dp"
-                android:textColor="@color/white" />
-
-            <ImageButton
-                android:id="@+id/updateData"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_baseline_edit_24"
-                android:layout_marginLeft="76dp"
-                />
+                android:textColor="@color/white"
+                android:layout_gravity="left"/>
 
             <ImageButton
                 android:id="@+id/deleteData"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/ic_baseline_delete_24"
-                android:layout_marginLeft="20dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                />
+
+            <ImageButton
+                android:id="@+id/updateData"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_baseline_edit_24"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="right"
                 />
 
         </Toolbar>

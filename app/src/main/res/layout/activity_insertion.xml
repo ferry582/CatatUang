@@ -26,14 +26,14 @@
                 android:id="@+id/backBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="0dp"
+                android:layout_marginStart="0dp"
                 android:background="@drawable/ic_baseline_clear_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
-                android:paddingLeft="80dp"
+                android:paddingStart="80dp"
                 android:paddingTop="5dp"
                 android:text="Add Transaction"
                 android:textColor="@color/white"
@@ -198,12 +198,15 @@
         <Button
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:paddingHorizontal="30dp"
             android:layout_below="@+id/noteTIL"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:text="Save"
-            android:textColor="@color/white" />
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
 
 
     </RelativeLayout>

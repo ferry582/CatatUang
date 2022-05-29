@@ -11,10 +11,10 @@
         android:layout_height="match_parent"
         android:background="#F1F0F0">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:id="@+id/up"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/orangeSecondary">
 
@@ -22,15 +22,21 @@
                 android:id="@+id/logo"
                 android:layout_width="160dp"
                 android:layout_height="62dp"
-                android:layout_marginHorizontal="120dp"
-                android:background="@drawable/logo_hitam_removebg"
-                android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/logo_hitam_removebg" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <Spinner
+                android:id="@+id/visibleSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_spinner"
+                android:textColor="@color/white"/>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

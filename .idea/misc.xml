@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.154" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/bg_spinner.xml" value="0.154" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_account_balance_wallet_24.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.16" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.19" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_alternate_email_24.xml" value="0.19" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.19" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.19" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.19" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_calendar_month_36.xml" value="0.19" />
@@ -17,8 +21,12 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_insert_chart_24.xml" value="0.2055" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_lock_open_24.xml" value="0.115" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_notes_24.xml" value="0.19" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.154" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.154" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_title_24.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_title_32.xml" value="0.144" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_title_36.xml" value="0.144" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_launcher_background.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/logout_button.xml" value="0.16" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/null_radio_button.xml" value="0.126" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/radio_not_selected.xml" value="0.126" />
@@ -27,6 +35,7 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/radio_text_selector.xml" value="0.126" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/rounded_button.xml" value="0.16" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/rounded_date_button.xml" value="0.2055" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/spinner_rounded.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1285140562248996" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout-w936dp/activity_login.xml" value="0.15" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
@@ -38,6 +47,9 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/fragment_account.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/fragment_profile.xml" value="0.12092391304347826" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/fragment_transaction.xml" value="0.22" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/selected_spinner.xml" value="0.2" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/selected_spinner_list.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/spinner_list.xml" value="0.2" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/transaction_list_item.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/update_dialog.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
