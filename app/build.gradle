@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.myapp.catatuang"
-        minSdk 21
+        minSdk 23 //minSdk change to 23 from 21
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -54,11 +54,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     implementation 'com.google.android.material:material:1.1.0'
-    def nav_version = "2.3.0-rc01"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:30.0.1')
@@ -67,6 +62,9 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-database-ktx'
 
-    //Pie Chart dependency
+    //Pie Chart dependency : https://github.com/PhilJay/MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //bottom navigation with floating action button : https://github.com/ismaeldivita/chip-navigation-bar
+    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
 }

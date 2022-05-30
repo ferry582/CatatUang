@@ -110,6 +110,7 @@ class AccountFragment : Fragment() {
         }, 200)
 
         //---date range picker ---
+        // Material design date range picker : https://material.io/components/date-pickers/android
         val dateRangeButton: Button = view.findViewById(R.id.buttonDate)
 
         dateRangeButton.text = convertDate(dateStart, dateEnd) //call function to conver millis to string
@@ -173,8 +174,8 @@ class AccountFragment : Fragment() {
         //setup pie chart colors
         val pieDataSet = PieDataSet(pieEntries, "Pie Chart")
         pieDataSet.setColors(
-            resources.getColor(R.color.toscaSecondary),
-            resources.getColor(R.color.toscaDarker)
+            resources.getColor(R.color.orangeSecondary),
+            resources.getColor(R.color.orangePrimary)
         )
 
         pieChart.description.isEnabled = false

@@ -4,20 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.AccountFragment">
+    tools:context=".fragments.AccountFragment"
+    android:background="#F1F0F0">
 
     <RelativeLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        >
 
         <RelativeLayout
             android:id="@+id/up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FBC780">
-
 
             <ImageView
                 android:id="@+id/picture"
@@ -67,18 +67,17 @@
                 android:textStyle="bold"
                 app:backgroundTint="#E4414D" />
 
-
         </RelativeLayout>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/up">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-1dp">
+                >
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonDate"
@@ -93,8 +92,11 @@
                     android:insetBottom="0dp"
                     android:text="Select date"
                     android:textColor="@color/white"
-                    android:textSize="13dp" />
-
+                    android:textSize="13dp"
+                    app:icon="@android:drawable/ic_menu_my_calendar"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/white"
+                    app:iconPadding="-12dp"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/reportCard"
@@ -103,12 +105,12 @@
                     android:layout_below="@id/buttonDate"
                     android:layout_marginHorizontal="10dp"
                     android:orientation="vertical"
-                    app:cardCornerRadius="10dp">
+                    app:cardCornerRadius="12dp"
+                    android:background="@color/white">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#151B1B1B"
                         android:gravity="center"
                         android:padding="10dp">
 
@@ -166,15 +168,52 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pieChart"
-                    android:layout_width="361dp"
-                    android:layout_height="260dp"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/chartCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/reportCard"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginBottom="30dp" />
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="10dp"
+                    android:background="@color/white"
+                    android:layout_marginBottom="100dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/chartTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:gravity="center"
+                            android:text="Expense/Income Chart"
+                            android:textColor="#333333"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/chartLine"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/chartTitle"
+                            android:background="#BCBCBC" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/pieChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="260dp"
+                            android:layout_below="@id/chartLine"
+                            android:layout_marginTop="10dp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
 

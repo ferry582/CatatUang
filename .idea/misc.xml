@@ -8,6 +8,7 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_account_balance_wallet_24.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.16" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.19" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_add_bottom_nav.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_alternate_email_24.xml" value="0.19" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.19" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.154" />
@@ -41,7 +42,7 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_insertion.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_transaction_details.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/fragment_account.xml" value="0.22" />

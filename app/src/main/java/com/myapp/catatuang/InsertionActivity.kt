@@ -36,13 +36,8 @@ class InsertionActivity : AppCompatActivity() {
 
         //---back button---
         val backButton: ImageButton = findViewById(R.id.backBtn)
-
         backButton.setOnClickListener {
-            Intent(this, MainActivity::class.java).also {
-                it.flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK //tujuan flag agar tidak bisa menggunakan back
-                startActivity(it)
-            }
+            finish()
         }
         //--------
 
@@ -85,7 +80,7 @@ class InsertionActivity : AppCompatActivity() {
         //------
 
         //--radio button option choosing---
-        radioGroup.setOnCheckedChangeListener { group, checkedID ->
+        radioGroup.setOnCheckedChangeListener { _, checkedID ->
             etCategory.text.clear() //clear the category autocompletetextview when the type changes
             if (checkedID == R.id.rbExpense) {
                 type = 1 //expense
@@ -107,13 +102,10 @@ class InsertionActivity : AppCompatActivity() {
         }
         //-----
 
-
-
-
         //---date picker---
         val sdf = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
         val currentDate = sdf.parse(sdf.format(System.currentTimeMillis())) //take current date
-        date = currentDate.time //initialized date value to current date
+        date = currentDate!!.time //initialized date value to current date
         etDate.setOnClickListener {
             clickDatePicker()
         }
@@ -139,7 +131,7 @@ class InsertionActivity : AppCompatActivity() {
 
                 val sdf = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
                 val theDate = sdf.parse(selectedDate)
-                date = theDate.time //convert date to millisecond
+                date = theDate!!.time //convert date to millisecond
 
             },
             year,

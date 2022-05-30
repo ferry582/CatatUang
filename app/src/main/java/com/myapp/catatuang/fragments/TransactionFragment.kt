@@ -57,15 +57,6 @@ class TransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //---Intent button add---
-        btnAdd = view.findViewById(R.id.addBtn)
-        btnAdd.setOnClickListener {
-            Intent(this.activity, InsertionActivity::class.java).also {
-                activity?.startActivity(it)
-            }
-        }
-        //--------
-
         //--visibility option spinner--
         visibilityOptions()
         //-----
@@ -80,8 +71,6 @@ class TransactionFragment : Fragment() {
 
         getTransactionData()
         //----
-
-
     }
 
     private fun visibilityOptions (){

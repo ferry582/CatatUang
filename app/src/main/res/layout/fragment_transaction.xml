@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/orangeSecondary">
+            android:background="#FBC780">
 
             <ImageView
                 android:id="@+id/logo"
@@ -34,7 +34,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_spinner"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
@@ -43,23 +43,6 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/up"
             >
-
-            <Button
-                android:id="@+id/addBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/rounded_button"
-                android:drawableLeft="@drawable/ic_baseline_add_24"
-                android:paddingTop="10dp"
-                android:paddingRight="40dp"
-                android:paddingBottom="10dp"
-                android:text="Add"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTransaction"
@@ -81,10 +64,8 @@
                 android:visibility="gone"
                 android:layout_centerInParent="true"/>
 
-
         </RelativeLayout>
 
     </RelativeLayout>
-
 
 </FrameLayout>
