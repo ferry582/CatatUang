@@ -5,10 +5,10 @@ I use Kotlin to build the app, and use Firebase to authenticate users, also Fire
 ## User Interface :iphone:
 These are some pictures of the app's user interface :<br /><br />
 <img src="imagesUI/Update button login.jpg" width=200>
-<img src="imagesUI/update add spinner transaction fragment.jpg" width=200>
+<img src="imagesUI/Transaction Fragment with updated Bottom Nav.jpg" width=200>
 <img src="imagesUI/insert transaction.jpg" width=200><br />
 <img src="imagesUI/transaction detail.jpg" width=200>
-<img src="imagesUI/Update Pie Chart on account fragment.jpg" width=200>
+<img src="imagesUI/Update UI on Account Fragment.jpg" width=200>
 
 <br />
 Demo App : https://github.com/ferry582/CatatUang/blob/master/app-debug.apk
