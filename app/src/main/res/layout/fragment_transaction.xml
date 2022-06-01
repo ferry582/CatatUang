@@ -1,71 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.TransactionFragment">
+    tools:context=".fragments.TransactionFragment"
+    android:background="#FBC780">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F1F0F0">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:id="@+id/up"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="#FBC780">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="160dp"
-                android:layout_height="62dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginVertical="20dp"
-                android:background="@drawable/logo_hitam_removebg" />
+            <RelativeLayout
+                android:id="@+id/up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FBC780"
+                app:layout_collapseMode="parallax">
 
-            <Spinner
-                android:id="@+id/visibleSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_below="@id/logo"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_spinner"
-                android:textColor="@color/white" />
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="160dp"
+                    android:layout_height="62dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginVertical="20dp"
+                    android:background="@drawable/logo_hitam_removebg" />
 
-        </RelativeLayout>
+                <Spinner
+                    android:id="@+id/visibleSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/logo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/bg_spinner"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@drawable/bg_transactionlist">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/up"
+            android:layout_marginBottom="50dp"
+            android:paddingTop="7dp"
+            android:paddingHorizontal="5dp"
             >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/line"
+                android:layout_width="50dp"
+                android:layout_height="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0dp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="5dp"
+                    android:background="#E1E1E1"
+                    />
+            </androidx.cardview.widget.CardView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTransaction"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@id/line"
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
                 android:layout_marginBottom="1dp"
                 tools:listitem="@layout/transaction_list_item" />
 
-            <TextView
-                android:id="@+id/tvLoadingData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No Data..."
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:visibility="gone"
-                android:layout_centerInParent="true"/>
-
         </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/tvLoadingData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Data..."
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"/>
 
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

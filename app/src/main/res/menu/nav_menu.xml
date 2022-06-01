@@ -5,7 +5,7 @@
     <item
         android:id="@+id/ic_transaction"
         android:icon="@drawable/ic_baseline_account_balance_wallet_24"
-        android:title="Transaction"
+        android:title="List"
         app:cnb_iconColor="@color/orangePrimary"
         app:cnb_backgroundColor="#40FF9F1C"
         />
