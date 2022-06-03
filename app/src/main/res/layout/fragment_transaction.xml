@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@drawable/bg_transactionlist">
+        android:background="@drawable/bg_rounded_layout">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -62,7 +62,7 @@
             >
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/line"
+                android:id="@+id/pullIcon"
                 android:layout_width="50dp"
                 android:layout_height="5dp"
                 android:layout_centerHorizontal="true"
@@ -80,7 +80,7 @@
                 android:id="@+id/rvTransaction"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/line"
+                android:layout_below="@id/pullIcon"
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="1dp"
@@ -91,14 +91,24 @@
     </androidx.core.widget.NestedScrollView>
 
     <TextView
-        android:id="@+id/tvLoadingData"
+        android:id="@+id/tvNoData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No Data..."
+        android:text="No transaction yet,\nadd transaction below."
+        android:gravity="center"
         android:textSize="20sp"
-        android:textColor="@color/black"
+        android:textColor="@color/toscaSecondary"
+        android:fontFamily="@font/poppinsmedium"
         android:visibility="gone"
         android:layout_gravity="center"
         android:layout_centerInParent="true"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

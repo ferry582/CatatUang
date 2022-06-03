@@ -30,9 +30,9 @@ class TransactionFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var btnAdd: Button
     private lateinit var transactionRecyclerView: RecyclerView
-    private lateinit var tvLoadingData: TextView
+    private lateinit var tvNoData: TextView
+    private lateinit var loadingRecyclerView: ProgressBar
     private lateinit var transactionList: ArrayList<TransactionModel>
     private lateinit var dbRef: DatabaseReference
     private lateinit var visibleOption: Spinner
@@ -65,7 +65,8 @@ class TransactionFragment : Fragment() {
         transactionRecyclerView = view.findViewById(R.id.rvTransaction)
         transactionRecyclerView.layoutManager = LinearLayoutManager(this.activity)
         transactionRecyclerView.setHasFixedSize(true)
-        tvLoadingData = view.findViewById(R.id.tvLoadingData)
+        tvNoData = view.findViewById(R.id.tvNoData)
+        loadingRecyclerView = view.findViewById(R.id.progressBar)
 
         transactionList = arrayListOf<TransactionModel>()
 
@@ -99,7 +100,7 @@ class TransactionFragment : Fragment() {
 
     private fun getTransactionData() {
         transactionRecyclerView.visibility = View.GONE //hide the recycler view
-        tvLoadingData.visibility = View.VISIBLE //make the loading data visible
+        loadingRecyclerView.visibility = View.VISIBLE
 
         val user = Firebase.auth.currentUser
         val uid = user?.uid //get user id from database
@@ -154,9 +155,11 @@ class TransactionFragment : Fragment() {
                             startActivity(intent)
                         }
                     })
-
+                    loadingRecyclerView.visibility = View.GONE
                     transactionRecyclerView.visibility = View.VISIBLE
-                    tvLoadingData.visibility = View.GONE
+                }else{
+                    loadingRecyclerView.visibility = View.GONE
+                    tvNoData.visibility = View.VISIBLE
                 }
             }
 

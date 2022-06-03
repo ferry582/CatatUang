@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
-import android.icu.util.CurrencyAmount
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -44,9 +43,7 @@ class TransactionDetails : AppCompatActivity() {
         val updateData: ImageButton = findViewById(R.id.updateData)
         updateData.setOnClickListener {
             openUpdateDialog(
-
                 intent.getStringExtra("title").toString()
-
             )
         }
         //------
@@ -57,12 +54,12 @@ class TransactionDetails : AppCompatActivity() {
         deleteData.setOnClickListener {
             alertBox.setTitle("Are you sure?")
             alertBox.setMessage("Do you want to delete this transaction?")
-            alertBox.setPositiveButton("Yes", { dialogInterface: DialogInterface, i: Int ->
+            alertBox.setPositiveButton("Yes") { _: DialogInterface, _: Int ->
                 deleteRecord(
                     intent.getStringExtra("transactionID").toString()
                 )
-            })
-            alertBox.setNegativeButton("No", { dialogInterface: DialogInterface, i: Int -> })
+            }
+            alertBox.setNegativeButton("No") { _: DialogInterface, _: Int -> }
             alertBox.show()
         }
         //------
@@ -122,8 +119,8 @@ class TransactionDetails : AppCompatActivity() {
         }
 
         val date: Long = intent.getLongExtra("date", 0)
-        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val result: Date = Date(date)
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        val result = Date(date)
         tvDateDetails.text = simpleDateFormat.format(result)
 
         tvCategoryDetails.text =  intent.getStringExtra("category")
@@ -201,8 +198,8 @@ class TransactionDetails : AppCompatActivity() {
 
         //---set text to date edit text and date picker:---
         val date: Long = intent.getLongExtra("date", 0)
-        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-        val result: Date = Date(date)
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        val result = Date(date)
         etDate.setText(simpleDateFormat.format(result))
 
         var dateUpdate: Long = intent.getLongExtra("date", 0) //initialized current date value on db
@@ -220,9 +217,9 @@ class TransactionDetails : AppCompatActivity() {
                     etDate.text = null
                     etDate.hint = selectedDate
 
-                    val sdf = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+                    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
                     val theDate = sdf.parse(selectedDate)
-                    dateUpdate = theDate.time //convert date to millisecond
+                    dateUpdate = theDate!!.time //convert date to millisecond
                     invertedDate = dateUpdate * -1
                 },
                 year,
@@ -233,7 +230,7 @@ class TransactionDetails : AppCompatActivity() {
         }
         //-------
 
-        mDialog.setTitle("Updating $title Record")
+        mDialog.setTitle("Updating $title's Transaction")
 
         val alertDialog = mDialog.create()
         alertDialog.show()
@@ -264,8 +261,8 @@ class TransactionDetails : AppCompatActivity() {
             //tvDateDetails.text = etDate.hint.toString()
 
             val date: Long = dateUpdate
-            val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-            val result: Date = Date(date)
+            val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+            val result = Date(date)
             tvDateDetails.text = simpleDateFormat.format(result)
             //---
 

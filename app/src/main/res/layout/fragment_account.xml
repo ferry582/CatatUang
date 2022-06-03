@@ -1,110 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AccountFragment"
-    android:background="@color/white">
+    android:background="#FBC780">
 
-    <RelativeLayout
-
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         >
 
-        <RelativeLayout
-            android:id="@+id/up"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FBC780">
-
-            <ImageView
-                android:id="@+id/picture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="152dp"
-                android:background="@drawable/ic_baseline_account_circle_24" />
-
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/picture"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="Account"
-                android:textColor="@color/toscaSecondary"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvName"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:text="Account"
-                android:textColor="#333333"
-                android:textSize="15sp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_below="@id/tvEmail"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/rounded_button"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="Log Out"
-                android:textColor="@color/white"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:backgroundTint="#E4414D" />
-
-        </RelativeLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/up">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:background="#FBC780"
+                app:layout_collapseMode="parallax"
                 >
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/buttonDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                <ImageView
+                    android:id="@+id/picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginHorizontal="70dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="152dp"
+                    android:background="@drawable/ic_baseline_account_circle_24"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/picture"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Account"
+                    android:textColor="@color/toscaSecondary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvName"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:text="Account"
+                    android:textColor="#333333"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/tvEmail"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/rounded_button"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:text="Select date"
+                    android:text="Log Out"
                     android:textColor="@color/white"
-                    android:textSize="13dp"
-                    app:icon="@android:drawable/ic_menu_my_calendar"
-                    app:iconSize="24dp"
-                    app:iconTint="@color/white"
-                    app:iconPadding="-12dp"/>
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#E4414D" />
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/reportCard"
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_layout"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/pullIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="7dp"
+                    app:cardCornerRadius="50dp"
+                    app:cardElevation="0dp">
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="5dp"
+                        android:background="#E1E1E1"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/allTimeTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/buttonDate"
-                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_below="@id/pullIcon"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:gravity="start"
+                    android:text="All Time Transactions"
+                    android:textColor="#888888"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/allTimeCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/allTimeTitle"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginHorizontal="15dp"
                     android:orientation="vertical"
                     app:cardCornerRadius="18dp"
                     android:background="@color/white"
@@ -116,71 +142,118 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:paddingVertical="10dp"
+                        android:paddingVertical="15dp"
                         android:paddingHorizontal="15dp">
 
                         <TextView
-                            android:id="@+id/reportTitle"
+                            android:id="@+id/netAmountTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsmedium"
-                            android:gravity="center"
-                            android:text="Transactions Recap "
-                            android:textColor="#333333"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/line"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_below="@+id/reportTitle"
-                            android:background="#DDDDDD" />
+                            android:text="Net Amount"
+                            android:textColor="#979797"
+                            android:textSize="13dp" />
 
                         <TextView
                             android:id="@+id/netAmount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/line"
-                            android:layout_marginTop="10dp"
+                            android:layout_below="@id/netAmountTitle"
                             android:fontFamily="@font/poppinsmedium"
-                            android:text="Net Amount :  -"
+                            android:text="0.00"
                             android:textColor="#333333"
-                            android:textSize="13dp" />
+                            android:textSize="22sp" />
 
-                        <TextView
-                            android:id="@+id/expenseAmount"
+                        <ImageView
+                            android:id="@+id/line"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/netAmount"
+                            android:background="#DDDDDD" />
+
+                        <LinearLayout
+                            android:id="@+id/linearAmountTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/netAmount"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="Expense Amount :  -"
-                            android:textColor="#D11818"
-                            android:textSize="13dp" />
+                            android:layout_below="@id/line"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/incomeAmount"
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="Expense"
+                                android:textColor="#979797"
+                                android:textSize="13sp"
+                                android:layout_weight="1"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="Income"
+                                android:textColor="#979797"
+                                android:textSize="13sp"
+                                android:layout_weight="1"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/expenseAmount"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="Income Amount :  -"
-                            android:textColor="#4CAF50"
-                            android:textSize="13dp" />
+                            android:layout_below="@id/linearAmountTitle"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/expenseAmount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="0.00"
+                                android:textColor="#D11818"
+                                android:textSize="18sp"
+                                android:layout_weight="1"/>
+
+                            <TextView
+                                android:id="@+id/incomeAmount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="0.00"
+                                android:textColor="#4CAF50"
+                                android:textSize="18sp"
+                                android:layout_weight="1"/>
+
+                        </LinearLayout>
+
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/chartTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/allTimeCard"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:gravity="start"
+                    android:text="Expense - Income Chart"
+                    android:textColor="#888888"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/chartCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/reportCard"
-                    android:layout_marginHorizontal="12dp"
+                    android:layout_below="@id/chartTitle"
+                    android:layout_marginHorizontal="15dp"
                     android:orientation="vertical"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="5dp"
                     app:cardCornerRadius="18dp"
                     android:background="@color/white"
                     android:layout_marginBottom="100dp"
@@ -195,30 +268,70 @@
                         android:paddingVertical="10dp"
                         android:paddingHorizontal="15dp">
 
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/rounded_button"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:text="Select date"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            app:icon="@android:drawable/ic_menu_my_calendar"
+                            app:iconPadding="-12dp"
+                            app:iconSize="24dp"
+                            app:iconTint="@color/white" />
+
                         <TextView
-                            android:id="@+id/chartTitle"
+                            android:id="@+id/netAmountRangeTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/buttonDate"
                             android:fontFamily="@font/poppinsmedium"
-                            android:gravity="center"
-                            android:text="Expense/Income Chart"
-                            android:textColor="#333333"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:text="Net Amount"
+                            android:textColor="#979797"
+                            android:textSize="13sp" />
 
-                        <ImageView
-                            android:id="@+id/chartLine"
+                        <TextView
+                            android:id="@+id/netAmountRange"
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_below="@+id/chartTitle"
-                            android:background="#DDDDDD" />
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/netAmountRangeTitle"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="0.00"
+                            android:textColor="#333333"
+                            android:textSize="22sp" />
+
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="260dp"
+                            android:layout_below="@id/netAmountRange" />
+
+                        <TextView
+                            android:id="@+id/pieChartTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/barChart"
+                            android:gravity="center"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:text="Income - Expense Ratio"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="#979797"
+                            android:textSize="13sp" />
 
                         <com.github.mikephil.charting.charts.PieChart
                             android:id="@+id/pieChart"
                             android:layout_width="match_parent"
                             android:layout_height="260dp"
-                            android:layout_below="@id/chartLine"
-                            android:layout_marginTop="10dp" />
+                            android:layout_below="@+id/pieChartTitle"
+                            />
 
                     </RelativeLayout>
 
@@ -228,6 +341,7 @@
 
         </ScrollView>
 
-    </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
-</FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

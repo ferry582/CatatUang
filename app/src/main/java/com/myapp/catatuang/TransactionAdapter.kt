@@ -33,12 +33,14 @@ class TransactionAdapter (private val transactionList: ArrayList<TransactionMode
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentTransaction = transactionList[position]
         holder.tvTransactionTitle.text = currentTransaction.title // get the current title
-        holder.tvTransactionAmount.text = currentTransaction.amount.toString() //get the current amount
+
         if (currentTransaction.amount!! < 0){
             holder.tvTransactionAmount.setTextColor(Color.RED)
+            holder.tvTransactionAmount.text = "${currentTransaction.amount!!*-1}" //get the current amount
         }
         if (currentTransaction.amount!! > 0){
             holder.tvTransactionAmount.setTextColor(Color.parseColor("#489E4C"))
+            holder.tvTransactionAmount.text = currentTransaction.amount.toString()
         }
 
         holder.tvCategory.text = currentTransaction.category
