@@ -35,6 +35,7 @@ class TransactionFragment : Fragment() {
     private lateinit var loadingRecyclerView: ProgressBar
     private lateinit var transactionList: ArrayList<TransactionModel>
     private lateinit var dbRef: DatabaseReference
+    private val user = Firebase.auth.currentUser
     private lateinit var visibleOption: Spinner
     private var selectedOption: Int = 1
 
@@ -57,9 +58,9 @@ class TransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //--visibility option spinner--
-        visibilityOptions()
-        //-----
+        showUserName()
+
+        visibilityOptions() //visibility option spinner
 
         //--Recycler View transaction items--
         transactionRecyclerView = view.findViewById(R.id.rvTransaction)
@@ -72,6 +73,14 @@ class TransactionFragment : Fragment() {
 
         getTransactionData()
         //----
+    }
+
+    private fun showUserName() {
+        val tvUserName: TextView = requireView().findViewById(R.id.userNameTV)
+
+        val email = user!!.email
+        val splitValue = email?.split("@") //
+        tvUserName.text = "Hi, ${splitValue?.get(0).toString()}!"
     }
 
     private fun visibilityOptions (){
@@ -102,7 +111,6 @@ class TransactionFragment : Fragment() {
         transactionRecyclerView.visibility = View.GONE //hide the recycler view
         loadingRecyclerView.visibility = View.VISIBLE
 
-        val user = Firebase.auth.currentUser
         val uid = user?.uid //get user id from database
         if (uid != null) {
             dbRef = FirebaseDatabase.getInstance().getReference(uid)

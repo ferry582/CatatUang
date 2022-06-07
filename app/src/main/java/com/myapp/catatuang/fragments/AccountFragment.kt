@@ -150,6 +150,7 @@ class AccountFragment : Fragment() {
     private fun logout() {
         val btnLogout: Button = requireView().findViewById(R.id.btnLogout)
         btnLogout.setOnClickListener {
+            FirebaseDatabase.getInstance().goOffline()
             auth.signOut()
             Intent(this.activity, Login::class.java).also {
                 it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK //tujuan flag agar tidak bisa menggunakan back
@@ -164,26 +165,26 @@ class AccountFragment : Fragment() {
         val tvAmountExpense: TextView = requireView().findViewById(R.id.expenseAmount)
         val tvAmountIncome: TextView = requireView().findViewById(R.id.incomeAmount)
 
-        tvNetAmount.text = "${allTimeIncome+allTimeExpense}"
-        tvAmountExpense.text = "${allTimeExpense*-1}"
+        tvNetAmount.text = "${allTimeIncome-allTimeExpense}"
+        tvAmountExpense.text = "$allTimeExpense"
         tvAmountIncome.text = "$allTimeIncome"
     }
 
     private fun setupBarChart() {
         //Bar Chart Library Dependency : https://github.com/PhilJay/MPAndroidChart
         val netAmountRangeDate: TextView = requireView().findViewById(R.id.netAmountRange)
-        netAmountRangeDate.text = "${amountIncome+amountExpense}" //show the net amount on textview
+        netAmountRangeDate.text = "${amountIncome-amountExpense}" //show the net amount on textview
 
         val barChart: BarChart = requireView().findViewById(R.id.barChart)
 
         val barEntries = arrayListOf<BarEntry>()
-        barEntries.add(BarEntry(1f, amountExpense.toFloat()*-1))
+        barEntries.add(BarEntry(1f, amountExpense.toFloat()))
         barEntries.add(BarEntry(2f, amountIncome.toFloat()))
 
         val xAxisValue= arrayListOf<String>("","Expense", "Income")
 
         //custom bar chart :
-        barChart.animateXY(500, 500)
+        barChart.animateXY(500, 500) //create bar chart animation
         barChart.description.isEnabled = false
         barChart.setDrawValueAboveBar(true)
         barChart.setDrawBarShadow(false)
@@ -195,6 +196,8 @@ class AccountFragment : Fragment() {
 
         barChart.axisRight.isEnabled = false
         barChart.axisLeft.isEnabled = false
+        barChart.axisLeft.axisMinimum = 0f
+
 
         val xAxis = barChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
@@ -225,7 +228,7 @@ class AccountFragment : Fragment() {
         val pieChart: PieChart = requireView().findViewById(R.id.pieChart)
 
         val pieEntries = arrayListOf<PieEntry>()
-        pieEntries.add(PieEntry(amountExpense.toFloat()*-1, "Expense"))
+        pieEntries.add(PieEntry(amountExpense.toFloat(), "Expense"))
         pieEntries.add(PieEntry(amountIncome.toFloat(), "Income"))
 
         //pie chart animation
@@ -274,11 +277,11 @@ class AccountFragment : Fragment() {
                 }
                 //separate expanse amount and income amount, and show it based on the range date :
                 for ((i) in transactionList.withIndex()){
-                    if (transactionList[i].amount!! < 0 &&
+                    if (transactionList[i].type == 1 &&
                         transactionList[i].date!! > dateStart-86400000 && //minus by 1 day
                         transactionList[i].date!! <= dateEnd){
                         amountExpenseTemp += transactionList[i].amount!!
-                    }else if (transactionList[i].amount!! >= 0 &&
+                    }else if (transactionList[i].type == 2 &&
                         transactionList[i].date!! > dateStart-86400000 &&
                         transactionList[i].date!! <= dateEnd){
                         amountIncomeTemp += transactionList[i].amount!!
@@ -292,9 +295,9 @@ class AccountFragment : Fragment() {
 
                 //take all amount expense and income :
                 for ((i) in transactionList.withIndex()){
-                    if (transactionList[i].amount!! < 0 ){
+                    if (transactionList[i].type == 1 ){
                         amountExpenseTemp += transactionList[i].amount!!
-                    }else if (transactionList[i].amount!! >= 0){
+                    }else if (transactionList[i].type == 2){
                         amountIncomeTemp += transactionList[i].amount!!
                     }
                 }

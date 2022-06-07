@@ -34,14 +34,12 @@ class TransactionAdapter (private val transactionList: ArrayList<TransactionMode
         val currentTransaction = transactionList[position]
         holder.tvTransactionTitle.text = currentTransaction.title // get the current title
 
-        if (currentTransaction.amount!! < 0){
+        if (currentTransaction.type == 1){
             holder.tvTransactionAmount.setTextColor(Color.RED)
-            holder.tvTransactionAmount.text = "${currentTransaction.amount!!*-1}" //get the current amount
-        }
-        if (currentTransaction.amount!! > 0){
+        }else{
             holder.tvTransactionAmount.setTextColor(Color.parseColor("#489E4C"))
-            holder.tvTransactionAmount.text = currentTransaction.amount.toString()
         }
+        holder.tvTransactionAmount.text = currentTransaction.amount.toString()
 
         holder.tvCategory.text = currentTransaction.category
 

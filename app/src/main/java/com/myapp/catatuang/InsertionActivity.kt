@@ -155,9 +155,7 @@ class InsertionActivity : AppCompatActivity() {
         }else if(category.isEmpty()){
             etCategory.error = "Please enter Category"
         }else{
-            amount = etAmount.text.toString().toDouble()
-            if (type == 1) //if the type is expense then convert it into negative value
-                amount *= -1
+            amount = etAmount.text.toString().toDouble() //convert to double type
 
             val transactionID = dbRef.push().key!!
             invertedDate = date * -1 //convert millis value to negative, so it can be sort as descending order

@@ -111,10 +111,9 @@ class TransactionDetails : AppCompatActivity() {
 
         val amount: Double = intent.getDoubleExtra("amount", 0.0)
         tvAmountDetails.text = amount.toString()
-        if (amount < 0){
+        if (type == 1){
             tvAmountDetails.setTextColor(Color.RED)
-        }
-        if (amount > 0){
+        }else{
             tvAmountDetails.setTextColor(Color.parseColor("#489E4C"))
         }
 
@@ -148,17 +147,10 @@ class TransactionDetails : AppCompatActivity() {
         //--------
 
         etTitle.setText(intent.getStringExtra("title").toString())
-
-        var amountTemp: Double = intent.getDoubleExtra("amount", 0.0)
-        if (amountTemp < 0){ //set amount value in edit text always in posite value
-            amountTemp *= -1
-            etAmount.setText(amountTemp.toString())
-        }
-        etAmount.setText(amountTemp.toString())
-
+        etAmount.setText(intent.getDoubleExtra("amount", 0.0).toString())
         etNote.setText(intent.getStringExtra("note")).toString()
-        val type: Int = intent.getIntExtra("type",0)
 
+        val type: Int = intent.getIntExtra("type",0)
         val transactionID = intent.getStringExtra("transactionID") //store transaction id
 
         //set text to auto complete text view category:
@@ -236,17 +228,13 @@ class TransactionDetails : AppCompatActivity() {
         alertDialog.show()
 
         btnUpdateData.setOnClickListener {
-            var amountUpdate: Double = etAmount.text.toString().toDouble()
-            if (type == 1){ //if the transaction type is 1 (expense), then set amount value back to negative
-                amountUpdate *= -1
-            }
 
             updateTransactionData(
                 transactionID.toString(),
                 type,
                 etTitle.text.toString(),
                 etCategory.text.toString(),
-                amountUpdate,
+                etAmount.text.toString().toDouble(),
                 dateUpdate,
                 etNote.text.toString(),
                 invertedDate
@@ -255,7 +243,7 @@ class TransactionDetails : AppCompatActivity() {
 
             //setting updated data to textviews :
             tvTitleDetails.text = etTitle.text.toString()
-            tvAmountDetails.text = amountUpdate.toString()
+            tvAmountDetails.text = etAmount.text.toString()
             tvNoteDetails.text = etNote.text.toString()
             tvCategoryDetails.text = etCategory.text.toString()
             //tvDateDetails.text = etDate.hint.toString()
