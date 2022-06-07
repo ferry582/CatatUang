@@ -8,7 +8,8 @@ These are some pictures of the app's user interface :<br /><br />
 <img src="imagesUI/20220601_Update UI Transaction Fragment.jpg" width=200>
 <img src="imagesUI/insert transaction.jpg" width=200><br />
 <img src="imagesUI/transaction detail.jpg" width=200>
-<img src="imagesUI/20220601_Update UI Account Fragment.jpg" width=200>
+<img src="imagesUI/20220603 Update UI fragment account.jpg" width=200>
+<img src="imagesUI/20220603 Add bar chart fragment account.jpg" width=200>
 
 <br />
 Demo App : https://github.com/ferry582/CatatUang/blob/master/app-debug.apk
