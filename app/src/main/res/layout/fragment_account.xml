@@ -107,7 +107,7 @@
                         android:layout_width="50dp"
                         android:layout_height="5dp"
                         android:background="#E1E1E1"
-                        />
+                        android:contentDescription="TODO" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -152,7 +152,7 @@
                             android:fontFamily="@font/poppinsmedium"
                             android:text="Net Amount"
                             android:textColor="#979797"
-                            android:textSize="13dp" />
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/netAmount"
@@ -212,7 +212,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppinsmedium"
                                 android:text="0.00"
-                                android:textColor="#D11818"
+                                android:textColor="@color/orangePrimary"
                                 android:textSize="18sp"
                                 android:layout_weight="1"/>
 
@@ -222,7 +222,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppinsmedium"
                                 android:text="0.00"
-                                android:textColor="#4CAF50"
+                                android:textColor="@color/toscaSecondary"
                                 android:textSize="18sp"
                                 android:layout_weight="1"/>
 
@@ -241,7 +241,7 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppinsmedium"
                     android:gravity="start"
-                    android:text="Expense - Income Chart"
+                    android:text="Expense - Income Report"
                     android:textColor="#888888"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -273,19 +273,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginHorizontal="10dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="20dp"
-                            android:background="@drawable/rounded_button"
-                            android:insetTop="0dp"
+                            android:backgroundTint="@color/toscaSecondary"
+                            android:drawableLeft="@drawable/ic_calendar_svgrepo_com"
+                            android:fontFamily="@font/poppinsmedium"
+                            android:insetTop="1dp"
                             android:insetBottom="0dp"
+                            android:paddingRight="40dp"
                             android:text="Select date"
                             android:textColor="@color/white"
-                            android:textSize="13sp"
-                            app:icon="@android:drawable/ic_menu_my_calendar"
-                            app:iconPadding="-12dp"
-                            app:iconSize="24dp"
-                            app:iconTint="@color/white" />
+                            android:textSize="14sp"
+                            app:cornerRadius="20dp"
+                            app:elevation="0dp" />
 
                         <TextView
                             android:id="@+id/netAmountRangeTitle"
@@ -307,30 +307,76 @@
                             android:textColor="#333333"
                             android:textSize="22sp" />
 
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/chartMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/netAmountRange"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="25dp"
+                            android:backgroundTint="#12000000"
+                            app:cardCornerRadius="7dp"
+                            app:cardElevation="0dp"
+                            >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <RadioGroup
+                                        android:id="@+id/RadioGroup"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="28dp"
+                                        android:orientation="horizontal"
+                                        android:layout_margin="2dp">
+
+                                        <RadioButton
+                                            android:id="@+id/rbBarChart"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/chart_selector"
+                                            android:button="@drawable/null_radio_button"
+                                            android:checked="true"
+                                            android:gravity="center"
+                                            android:text="Amount"
+                                            android:textColor="@drawable/chart_text_selector"
+                                            android:layout_weight="1"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPieChart"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/chart_selector"
+                                            android:button="@drawable/null_radio_button"
+                                            android:gravity="center"
+                                            android:text="Ratio"
+                                            android:textColor="@drawable/chart_text_selector"
+                                            android:layout_weight="1"/>
+
+                                    </RadioGroup>
+
+                                </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
                         <com.github.mikephil.charting.charts.BarChart
                             android:id="@+id/barChart"
                             android:layout_width="match_parent"
                             android:layout_height="260dp"
-                            android:layout_below="@id/netAmountRange" />
+                            android:layout_below="@id/chartMenu"
+                            android:layout_marginBottom="20dp"
+                            android:visibility="visible" />
 
-                        <TextView
-                            android:id="@+id/pieChartTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/barChart"
-                            android:gravity="center"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="Income - Expense Ratio"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginBottom="5dp"
-                            android:textColor="#979797"
-                            android:textSize="13sp" />
 
                         <com.github.mikephil.charting.charts.PieChart
                             android:id="@+id/pieChart"
                             android:layout_width="match_parent"
                             android:layout_height="260dp"
-                            android:layout_below="@+id/pieChartTitle"
+                            android:layout_below="@+id/chartMenu"
+                            android:layout_marginBottom="20dp"
+                            android:visibility="gone"
                             />
 
                     </RelativeLayout>

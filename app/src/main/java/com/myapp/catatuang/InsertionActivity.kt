@@ -22,7 +22,7 @@ class InsertionActivity : AppCompatActivity() {
     private lateinit var btnSaveData: Button
     private lateinit var radioGroup: RadioGroup
     private lateinit var etNote: EditText
-    private var type: Int = 1
+    private var type: Int = 1 //expense is the default value
     private var amount: Double = 0.0
     private var date: Long = 0
     private var invertedDate: Long = 0
@@ -105,7 +105,7 @@ class InsertionActivity : AppCompatActivity() {
         //---date picker---
         val sdf = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
         val currentDate = sdf.parse(sdf.format(System.currentTimeMillis())) //take current date
-        date = currentDate!!.time //initialized date value to current date
+        date = currentDate!!.time //initialized date value to current date as the default value
         etDate.setOnClickListener {
             clickDatePicker()
         }

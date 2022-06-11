@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
@@ -35,9 +36,9 @@ class TransactionAdapter (private val transactionList: ArrayList<TransactionMode
         holder.tvTransactionTitle.text = currentTransaction.title // get the current title
 
         if (currentTransaction.type == 1){
-            holder.tvTransactionAmount.setTextColor(Color.RED)
+            holder.tvTransactionAmount.setTextColor(Color.parseColor("#ff9f1c"))
         }else{
-            holder.tvTransactionAmount.setTextColor(Color.parseColor("#489E4C"))
+            holder.tvTransactionAmount.setTextColor(Color.parseColor("#2ec4b6"))
         }
         holder.tvTransactionAmount.text = currentTransaction.amount.toString()
 
@@ -46,6 +47,12 @@ class TransactionAdapter (private val transactionList: ArrayList<TransactionMode
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
         val result = Date(currentTransaction.date!!)
         holder.tvDate.text = simpleDateFormat.format(result)
+
+        if (currentTransaction.type == 1){
+            holder.typeIcon.setImageResource(R.drawable.ic_moneyout_svgrepo_com)
+        }else{
+            holder.typeIcon.setImageResource(R.drawable.ic_moneyin_svgrepo_com)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -57,6 +64,7 @@ class TransactionAdapter (private val transactionList: ArrayList<TransactionMode
         val tvTransactionAmount: TextView = itemView.findViewById(R.id.tvAmount)
         val tvCategory: TextView = itemView.findViewById(R.id.tvCategory)
         val tvDate: TextView = itemView.findViewById(R.id.tvDate)
+        val typeIcon: ImageView = itemView.findViewById(R.id.typeIcon)
 
         init {
             itemView.setOnClickListener {

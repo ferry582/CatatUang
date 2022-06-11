@@ -190,17 +190,20 @@ class TransactionDetails : AppCompatActivity() {
 
         //---set text to date edit text and date picker:---
         val date: Long = intent.getLongExtra("date", 0)
+        val cal = Calendar.getInstance()
+        val getDate = Date(date) //convert millis to date format
+        cal.time = getDate
+
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-        val result = Date(date)
-        etDate.setText(simpleDateFormat.format(result))
+        val resultParse = simpleDateFormat.format(getDate)
+        etDate.setText(resultParse)
 
         var dateUpdate: Long = intent.getLongExtra("date", 0) //initialized current date value on db
         var invertedDate: Long = dateUpdate * -1
         etDate.setOnClickListener {
-            val myCalendar = Calendar.getInstance()
-            val year = myCalendar.get(Calendar.YEAR)
-            val month = myCalendar.get(Calendar.MONTH)
-            val day = myCalendar.get(Calendar.DAY_OF_MONTH)
+            val year = cal.get(Calendar.YEAR) //set default year in datePickerDialog similar with database data
+            val month = cal.get(Calendar.MONTH)
+            val day = cal.get(Calendar.DAY_OF_MONTH)
 
             val dpd = DatePickerDialog(this,
                 { _, selectedYear, selectedMonth, selectedDayOfMonth ->

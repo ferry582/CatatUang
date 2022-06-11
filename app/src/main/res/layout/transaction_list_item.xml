@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="75dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="15dp"
     android:layout_marginBottom="10dp"
@@ -11,7 +11,7 @@
     app:strokeColor="#E1E1E1"
     app:cardElevation="0dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -20,63 +20,73 @@
         android:orientation="horizontal"
         android:background="@color/white">
 
-        <TextView
-            android:id="@+id/tvCategory"
-            android:layout_width="222dp"
+        <ImageView
+            android:id="@+id/typeIcon"
+            android:layout_width="47dp"
+            android:layout_height="47dp"
+            android:src="@drawable/ic_moneyin_svgrepo_com"
+            android:layout_marginEnd="13dp"
+            android:layout_marginStart="3dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppinsmedium"
-            android:gravity="left"
-            android:text="Category"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:layout_marginTop="1dp"/>
+            >
 
-        <TextView
-            android:id="@+id/tvTransactionTitle"
-            android:layout_width="272dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/tvAmount"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:gravity="left"
-            android:text="Transaction Title"
-            android:textColor="#606060"
-            android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@+id/tvCategory"
-            tools:layout_editor_absoluteX="1dp" />
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="222dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="left"
+                android:text="Category"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tvAmount"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="183dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:gravity="right"
-            android:text="99999.99"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/tvCategory"
-            tools:layout_editor_absoluteY="-7dp" />
+            <TextView
+                android:id="@+id/tvTransactionTitle"
+                android:layout_width="272dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="27dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="left"
+                android:text="Transaction Title"
+                android:textColor="#606060"
+                android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="96dp"
-            android:layout_height="30dp"
-            android:layout_below="@id/tvAmount"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:gravity="right"
-            android:text="31/12/2022"
-            android:fontFamily="@font/poppinsmedium"
-            android:textColor="#606060"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/tvTransactionTitle"
-            app:layout_constraintTop_toBottomOf="@+id/tvAmount" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="right"
+                android:text="99999.99"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="27dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="right"
+                android:text="31/12/2022"
+                android:textColor="#606060"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -57,7 +57,7 @@
         android:hint="Email"
         android:padding="20dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black" />
+        android:textColorHint="#787878" />
 
     <EditText
         android:id="@+id/password"
@@ -75,7 +75,7 @@
         android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black" />
+        android:textColorHint="#787878" />
 
     <TextView
         android:id="@+id/forgotPassword"

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.myapp.catatuang.databinding.ActivityLoginBinding
 
 class Login : AppCompatActivity() {
@@ -35,6 +36,7 @@ class Login : AppCompatActivity() {
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful){ //if the login successful, then change activity to main activity
                         val intent = Intent(this, MainActivity::class.java)
+                        FirebaseDatabase.getInstance().goOnline() //make the data base online after user login
                         Toast.makeText(this,"Login Successful", Toast.LENGTH_LONG).show()
                         binding.progressBar.visibility = View.GONE
                         startActivity(intent)

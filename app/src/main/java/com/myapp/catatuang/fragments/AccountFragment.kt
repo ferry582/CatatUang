@@ -9,7 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.util.Pair
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
@@ -54,6 +56,9 @@ class AccountFragment : Fragment() {
     var allTimeExpense: Double = 0.0
     var allTimeIncome: Double = 0.0
 
+    var dateStart: Long = 0
+    var dateEnd: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -79,6 +84,8 @@ class AccountFragment : Fragment() {
 
         setInitDate() //initialized or set the current date data to this month date range, it is default date range when the fragment is open
 
+        chartMenu()
+
         Handler().postDelayed({ //to make setupPieChart() and showAllTimeRecap() start after fetchAmount(), otherwise the setupPieChart() just show 0.0 value
             showAllTimeRecap() //show all time recap text
             setupPieChart()
@@ -88,11 +95,40 @@ class AccountFragment : Fragment() {
         dateRangePicker() //date range picker
     }
 
+    private fun chartMenu() {
+        var chartMenuRadio: RadioGroup = requireView().findViewById(R.id.RadioGroup)
+        val pieChart: PieChart = requireView().findViewById(R.id.pieChart)
+        val barChart: BarChart = requireView().findViewById(R.id.barChart)
+
+        chartMenuRadio.setOnCheckedChangeListener { _, checkedID ->
+            if (checkedID == R.id.rbBarChart){
+                barChart.visibility = View.VISIBLE
+                pieChart.visibility = View.GONE
+            }
+            if (checkedID == R.id.rbPieChart){
+                barChart.visibility = View.GONE
+                pieChart.visibility = View.VISIBLE
+            }
+        }
+    }
+
     private fun setInitDate() {
         val dateRangeButton: Button = requireView().findViewById(R.id.buttonDate)
-        //make the start and end date default value to the first day of this month and the current date :
-        val  dateStart: Long = MaterialDatePicker.thisMonthInUtcMilliseconds()//millis value of start date
-        val dateEnd: Long = MaterialDatePicker.todayInUtcMilliseconds() //millis value of end date
+
+        val currentDate = Date()
+        val cal: Calendar = Calendar.getInstance(TimeZone.getDefault())
+        cal.time = currentDate
+
+        val startDay = cal.getActualMinimum(Calendar.DAY_OF_MONTH) //get the first date of the month
+        cal.set(Calendar.DAY_OF_MONTH, startDay)
+        val startDate = cal.time
+        dateStart= startDate.time //convert to millis
+
+        val endDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH) //get the last date of the month
+        cal.set(Calendar.DAY_OF_MONTH, endDay)
+        val endDate = cal.time
+        dateEnd= endDate.time //convert to millis
+
         fetchAmount(dateStart, dateEnd) //call fetch amount so showAllTimeRecap() can be executed
         dateRangeButton.text = "This Month"
     }
@@ -106,8 +142,8 @@ class AccountFragment : Fragment() {
                 .setTitleText("Select Date")
                 .setSelection(
                     Pair(
-                        MaterialDatePicker.thisMonthInUtcMilliseconds(),
-                        MaterialDatePicker.todayInUtcMilliseconds()
+                        dateStart,
+                        dateEnd
                     )
                 ).build()
             datePicker.show(parentFragmentManager, "DatePicker")
