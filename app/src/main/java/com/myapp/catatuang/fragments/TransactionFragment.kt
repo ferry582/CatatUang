@@ -90,11 +90,20 @@ class TransactionFragment : Fragment() {
     }
 
     private fun showUserName() {
+        user?.reload()
         val tvUserName: TextView = requireView().findViewById(R.id.userNameTV)
-
         val email = user!!.email
-        val splitValue = email?.split("@") //
-        tvUserName.text = "Hi, ${splitValue?.get(0).toString()}!"
+        val userName = user!!.displayName
+
+
+        val name = if (userName == null || userName == ""){
+            val splitValue = email?.split("@")
+            splitValue?.get(0).toString()
+        }else{
+            userName
+        }
+
+        tvUserName.text = "Hi, ${name}!"
     }
 
     private fun visibilityOptions (){
@@ -174,6 +183,7 @@ class TransactionFragment : Fragment() {
         tvVisibilityNoData.visibility = View.GONE
         transactionRecyclerView.visibility = View.GONE //hide the recycler view
         loadingRecyclerView.visibility = View.VISIBLE
+        tvNoData.visibility = View.GONE
 
         val uid = user?.uid //get user id from database
         if (uid != null) {
@@ -192,8 +202,8 @@ class TransactionFragment : Fragment() {
                                     transactionList.add(transactionData!!)
                                 }else{
                                     if (transactionData!!.date!! > dateStart-86400000 &&
-                                        transactionData!!.date!!<= dateEnd){
-                                        transactionList.add(transactionData!!)
+                                        transactionData.date!!<= dateEnd){
+                                        transactionList.add(transactionData)
                                     }
                                 }
                             }
@@ -262,10 +272,16 @@ class TransactionFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                print("Listener was cancelled")
             }
 
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getTransactionData()
     }
 
     companion object {

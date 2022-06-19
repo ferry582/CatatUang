@@ -8,11 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioGroup
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.cardview.widget.CardView
 import androidx.core.util.Pair
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.XAxis
@@ -93,6 +92,19 @@ class AccountFragment : Fragment() {
         }, 200)
 
         dateRangePicker() //date range picker
+
+        swipeRefresh()
+    }
+
+    private fun swipeRefresh() {
+        val swipeRefreshLayout: SwipeRefreshLayout = requireView().findViewById(R.id.swipeRefresh)
+        swipeRefreshLayout.setOnRefreshListener { //call getTransaction() back to refresh the recyclerview
+            accountDetails()
+            showAllTimeRecap()
+            setupPieChart()
+            setupBarChart()
+            swipeRefreshLayout.isRefreshing = false
+        }
     }
 
     private fun chartMenu() {
@@ -170,23 +182,55 @@ class AccountFragment : Fragment() {
     private fun accountDetails() {
         val tvName: TextView = requireView().findViewById(R.id.tvName)
         val tvEmail: TextView = requireView().findViewById(R.id.tvEmail)
+        val tvPicture: TextView = requireView().findViewById(R.id.picture)
+        val verified: CardView = requireView().findViewById(R.id.verified)
+        val notVerified: CardView = requireView().findViewById(R.id.notVerified)
 
+        user?.reload() //reload user, so the verified badge can be change once the user have already verified the email.
         user?.let {
             // Name and email address
+            val userName = user!!.displayName
             val email = user!!.email
+
+            if (user!!.isEmailVerified){ //check if user email already verified
+                verified.visibility = View.VISIBLE
+                notVerified.visibility = View.GONE
+
+                verified.setOnClickListener {
+                    Toast.makeText(this@AccountFragment.activity, "Your account is verified!", Toast.LENGTH_LONG).show()
+                }
+            }else{
+                notVerified.visibility = View.VISIBLE
+                verified.visibility = View.GONE
+
+                notVerified.setOnClickListener {
+                    user?.sendEmailVerification()?.addOnCompleteListener {
+                        if (it.isSuccessful){
+                            Toast.makeText(this@AccountFragment.activity, "Check Your Email! (Including Spam)", Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(this@AccountFragment.activity, "${it.exception?.message}", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
 
             val splitValue = email?.split("@") //
             val name = splitValue?.get(0)
-
             tvName.text = name.toString()
+            tvPicture.text = name?.get(0).toString().uppercase()
             tvEmail.text = email.toString()
+
+            if (userName != null) {
+                tvName.text = userName.toString()
+                tvPicture.text = userName[0].toString().uppercase()
+            }
+
         }
     }
 
     private fun logout() {
-        val btnLogout: Button = requireView().findViewById(R.id.btnLogout)
+        val btnLogout: ImageButton = requireView().findViewById(R.id.btnLogout)
         btnLogout.setOnClickListener {
-            FirebaseDatabase.getInstance().goOffline()
             auth.signOut()
             Intent(this.activity, Login::class.java).also {
                 it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK //tujuan flag agar tidak bisa menggunakan back

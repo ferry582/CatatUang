@@ -39,12 +39,12 @@
                 android:layout_width="222dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="3dp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="left"
                 android:text="Category"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/tvTransactionTitle"
@@ -78,12 +78,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="right"
                 android:text="31/12/2022"
                 android:textColor="#606060"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
         </RelativeLayout>
 

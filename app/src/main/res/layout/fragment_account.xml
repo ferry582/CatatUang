@@ -1,323 +1,364 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AccountFragment"
-    android:background="@color/orangePrimary">
+    android:background="@color/white">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/orangePrimary"
-                app:layout_collapseMode="parallax"
-                >
-
-                <ImageView
-                    android:id="@+id/picture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="152dp"
-                    android:background="@drawable/ic_baseline_account_circle_24"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/picture"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:text="Account"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvName"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center"
-                    android:text="Account"
-                    android:textColor="#333333"
-                    android:textSize="15sp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnLogout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_below="@id/tvEmail"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/rounded_button"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="Log Out"
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    app:backgroundTint="#E4414D" />
-
-            </RelativeLayout>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_rounded_layout"
-                >
+                android:layout_height="match_parent">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/pullIcon"
-                    android:layout_width="50dp"
-                    android:layout_height="5dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="7dp"
-                    app:cardCornerRadius="50dp"
-                    app:cardElevation="0dp">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="5dp"
-                        android:background="#E1E1E1"
-                        android:contentDescription="TODO" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/allTimeTitle"
+                <RelativeLayout
+                    android:id="@+id/upperLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_below="@id/pullIcon"
-                    android:layout_marginTop="1dp"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:gravity="start"
-                    android:text="All Time Transactions"
-                    android:textColor="#888888"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:layout_height="168dp"
+                    android:background="@color/orangePrimary">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/allTimeCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/allTimeTitle"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginHorizontal="15dp"
-                    android:orientation="vertical"
-                    app:cardCornerRadius="18dp"
-                    android:background="@color/white"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#DDDDDD">
+                    <Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingVertical="15dp"
-                        android:paddingHorizontal="15dp">
-
-                        <TextView
-                            android:id="@+id/netAmountTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="Net Amount"
-                            android:textColor="#979797"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:id="@+id/netAmount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/netAmountTitle"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="0.00"
-                            android:textColor="#333333"
-                            android:textSize="22sp" />
-
-                        <ImageView
-                            android:id="@+id/line"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_below="@+id/netAmount"
-                            android:background="#DDDDDD" />
-
-                        <LinearLayout
-                            android:id="@+id/linearAmountTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/line"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/poppinsmedium"
-                                android:text="Expense"
-                                android:textColor="#979797"
-                                android:textSize="13sp"
-                                android:layout_weight="1"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:fontFamily="@font/poppinsmedium"
-                                android:text="Income"
-                                android:textColor="#979797"
-                                android:textSize="13sp"
-                                android:layout_weight="1"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/linearAmountTitle"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/expenseAmount"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppinsmedium"
-                                android:text="0.00"
-                                android:textColor="@color/orangePrimary"
-                                android:textSize="18sp"
-                                android:layout_weight="1"/>
-
-                            <TextView
-                                android:id="@+id/incomeAmount"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppinsmedium"
-                                android:text="0.00"
-                                android:textColor="@color/toscaSecondary"
-                                android:textSize="18sp"
-                                android:layout_weight="1"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:id="@+id/chartTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/allTimeCard"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:gravity="start"
-                    android:text="Expense - Income Report"
-                    android:textColor="#888888"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/chartCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/chartTitle"
-                    android:layout_marginHorizontal="15dp"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="18dp"
-                    android:background="@color/white"
-                    android:layout_marginBottom="100dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#DDDDDD">
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingVertical="10dp"
-                        android:paddingHorizontal="15dp">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/buttonDate"
-                            android:layout_width="match_parent"
+                        <ImageButton
+                            android:id="@+id/btnLogout"
+                            android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="20dp"
-                            android:backgroundTint="@color/toscaSecondary"
-                            android:drawableLeft="@drawable/ic_calendar_svgrepo_com"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:insetTop="1dp"
-                            android:insetBottom="0dp"
-                            android:paddingRight="40dp"
-                            android:text="Select date"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"
-                            app:cornerRadius="20dp"
-                            app:elevation="0dp" />
+                            android:layout_gravity="right"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/ic_baseline_logout_24" />
+
+                    </Toolbar>
+
+                    <LinearLayout
+                        android:id="@+id/accountInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/toolbar"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="-15dp"
+                        android:layout_marginBottom="20dp">
 
                         <TextView
-                            android:id="@+id/netAmountRangeTitle"
-                            android:layout_width="match_parent"
+                            android:id="@+id/picture"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/buttonDate"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="Net Amount"
-                            android:textColor="#979797"
-                            android:textSize="13sp" />
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/ic_baseline_circle_24"
+                            android:fontFamily="@font/poppinsbold"
+                            android:gravity="center"
+                            android:paddingTop="7dp"
+                            android:text="F"
+                            android:textColor="@color/orangePrimary"
+                            android:textSize="40sp" />
 
-                        <TextView
-                            android:id="@+id/netAmountRange"
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/netAmountRangeTitle"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="0.00"
-                            android:textColor="#333333"
-                            android:textSize="22sp" />
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp">
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/chartMenu"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-3dp"
+                                android:fontFamily="@font/poppinsbold"
+                                android:gravity="start"
+                                android:text="Account Name"
+                                android:textColor="#FBFBFB"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tvEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tvName"
+                                android:layout_marginTop="-5dp"
+                                android:layout_marginBottom="13dp"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:gravity="start"
+                                android:text="Account@email.com"
+                                android:textColor="#FFFFFF"
+                                android:textSize="13sp" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/verified"
+                                android:layout_width="126dp"
+                                android:layout_height="22dp"
+                                android:layout_below="@id/tvEmail"
+                                android:layout_marginTop="-7dp"
+                                android:backgroundTint="@color/white"
+                                android:visibility="invisible"
+                                app:cardCornerRadius="20dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:drawableLeft="@drawable/ic_verified_svgrepo_com"
+                                    android:drawablePadding="7dp"
+                                    android:gravity="center"
+                                    android:text="Verified Account"
+                                    android:textColor="#3FCEC0"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/notVerified"
+                                android:layout_width="100dp"
+                                android:layout_height="22dp"
+                                android:layout_below="@id/tvEmail"
+                                android:layout_marginTop="-7dp"
+                                android:backgroundTint="@color/white"
+                                android:visibility="visible"
+                                app:cardCornerRadius="20dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:drawableLeft="@drawable/ic_not_verified_svgrepo_com"
+                                    android:drawablePadding="7dp"
+                                    android:gravity="center"
+                                    android:text="Not Verified"
+                                    android:textColor="#B8B8B8"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/upperLayout">
+
+                    <TextView
+                        android:id="@+id/allTimeTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:gravity="start"
+                        android:text="All Time Transactions"
+                        android:textColor="#888888"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/allTimeCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/allTimeTitle"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#DDDDDD"
+                        app:strokeWidth="1dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/netAmountRange"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="25dp"
-                            android:backgroundTint="#12000000"
-                            app:cardCornerRadius="7dp"
-                            app:cardElevation="0dp"
-                            >
+                            android:gravity="center"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="15dp">
+
+                            <TextView
+                                android:id="@+id/netAmountTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="Net Amount"
+                                android:textColor="#979797"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/netAmount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/netAmountTitle"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="0.00"
+                                android:textColor="#333333"
+                                android:textSize="22sp" />
+
+                            <ImageView
+                                android:id="@+id/line"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_below="@+id/netAmount"
+                                android:background="#DDDDDD" />
+
+                            <LinearLayout
+                                android:id="@+id/linearAmountTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/poppinsmedium"
+                                    android:text="Expense"
+                                    android:textColor="#979797"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/poppinsmedium"
+                                    android:text="Income"
+                                    android:textColor="#979797"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/linearAmountTitle"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/expenseAmount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/poppinsmedium"
+                                    android:text="0.00"
+                                    android:textColor="@color/orangePrimary"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/incomeAmount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/poppinsmedium"
+                                    android:text="0.00"
+                                    android:textColor="@color/toscaSecondary"
+                                    android:textSize="18sp" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/chartTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/allTimeCard"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppinsmedium"
+                        android:gravity="start"
+                        android:text="Expense - Income Report"
+                        android:textColor="#888888"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/chartCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/chartTitle"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="100dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#DDDDDD"
+                        app:strokeWidth="1dp">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="10dp">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/buttonDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="20dp"
+                                android:backgroundTint="@color/toscaSecondary"
+                                android:drawableLeft="@drawable/ic_calendar_svgrepo_com"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:insetTop="1dp"
+                                android:insetBottom="0dp"
+                                android:paddingRight="40dp"
+                                android:text="Select date"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                app:cornerRadius="20dp"
+                                app:elevation="0dp" />
+
+                            <TextView
+                                android:id="@+id/netAmountRangeTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/buttonDate"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="Net Amount"
+                                android:textColor="#979797"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/netAmountRange"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/netAmountRangeTitle"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="0.00"
+                                android:textColor="#333333"
+                                android:textSize="22sp" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/chartMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/netAmountRange"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="25dp"
+                                android:backgroundTint="#12000000"
+                                app:cardCornerRadius="7dp"
+                                app:cardElevation="0dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -329,65 +370,69 @@
                                         android:id="@+id/RadioGroup"
                                         android:layout_width="match_parent"
                                         android:layout_height="28dp"
-                                        android:orientation="horizontal"
-                                        android:layout_margin="2dp">
+                                        android:layout_margin="2dp"
+                                        android:orientation="horizontal">
 
                                         <RadioButton
                                             android:id="@+id/rbBarChart"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:layout_weight="1"
                                             android:background="@drawable/chart_selector"
                                             android:button="@drawable/null_radio_button"
                                             android:checked="true"
                                             android:gravity="center"
                                             android:text="Amount"
-                                            android:textColor="@drawable/chart_text_selector"
-                                            android:layout_weight="1"/>
+                                            android:textColor="@drawable/chart_text_selector" />
 
                                         <RadioButton
                                             android:id="@+id/rbPieChart"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:layout_weight="1"
                                             android:background="@drawable/chart_selector"
                                             android:button="@drawable/null_radio_button"
                                             android:gravity="center"
                                             android:text="Ratio"
-                                            android:textColor="@drawable/chart_text_selector"
-                                            android:layout_weight="1"/>
+                                            android:textColor="@drawable/chart_text_selector" />
 
                                     </RadioGroup>
 
                                 </LinearLayout>
 
-                        </com.google.android.material.card.MaterialCardView>
+                            </com.google.android.material.card.MaterialCardView>
 
-                        <com.github.mikephil.charting.charts.BarChart
-                            android:id="@+id/barChart"
-                            android:layout_width="match_parent"
-                            android:layout_height="260dp"
-                            android:layout_below="@id/chartMenu"
-                            android:layout_marginBottom="20dp"
-                            android:visibility="visible" />
+                            <com.github.mikephil.charting.charts.BarChart
+                                android:id="@+id/barChart"
+                                android:layout_width="match_parent"
+                                android:layout_height="260dp"
+                                android:layout_below="@id/chartMenu"
+                                android:layout_marginBottom="20dp"
+                                android:visibility="visible" />
 
 
-                        <com.github.mikephil.charting.charts.PieChart
-                            android:id="@+id/pieChart"
-                            android:layout_width="match_parent"
-                            android:layout_height="260dp"
-                            android:layout_below="@+id/chartMenu"
-                            android:layout_marginBottom="20dp"
-                            android:visibility="gone"
-                            />
+                            <com.github.mikephil.charting.charts.PieChart
+                                android:id="@+id/pieChart"
+                                android:layout_width="match_parent"
+                                android:layout_height="260dp"
+                                android:layout_below="@+id/chartMenu"
+                                android:layout_marginBottom="20dp"
+                                android:visibility="gone" />
 
-                    </RelativeLayout>
+                        </RelativeLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
 
             </RelativeLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+</RelativeLayout>

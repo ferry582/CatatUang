@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "857837890100",
+    "firebase_url": "https://aplikasi-catat-uang-default-rtdb.firebaseio.com",
     "project_id": "aplikasi-catat-uang",
     "storage_bucket": "aplikasi-catat-uang.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "857837890100-78d99aqtfk8v9cr2bv1c4t6hig3t00al.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.myapp.catatuang",
+            "certificate_hash": "5702598e487aa806296684473c6398b4a140f9fd"
+          }
+        },
         {
           "client_id": "857837890100-l8j2qtb9ft7mb42dnm1l342l62ero0ij.apps.googleusercontent.com",
           "client_type": 3

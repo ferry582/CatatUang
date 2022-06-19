@@ -4,157 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TransactionDetails">
+    tools:context=".TransactionDetails"
+    android:background="@color/orangePrimary">
 
-    <LinearLayout
-        android:id="@+id/toolbarLinear"
+
+    <RelativeLayout
+        android:id="@+id/transactionDetailsTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:layout_height="270dp"
+        android:background="@drawable/bg_details_expense">
 
         <Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/orangePrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            android:layout_marginStart="-7dp">
+
             <ImageButton
                 android:id="@+id/backBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="0dp"
-                android:background="@drawable/ic_baseline_clear_24"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Transaction Details"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppinsbold"
-                android:paddingTop="5dp"
-                android:paddingLeft="28dp"
-                android:textColor="@color/white"
-                android:layout_gravity="left"/>
+                android:background="@drawable/ic_baseline_clear_24" />
 
             <ImageButton
                 android:id="@+id/deleteData"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/ic_baseline_delete_24"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"
-                />
+                android:background="@drawable/ic_baseline_delete_24" />
 
             <ImageButton
                 android:id="@+id/updateData"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/ic_baseline_edit_24"
-                android:layout_marginRight="20dp"
                 android:layout_gravity="right"
-                />
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_baseline_edit_24" />
 
         </Toolbar>
 
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/amountRelative"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbarLinear"
-        android:background="@color/orangeSecondary">
-
         <TextView
-            android:id="@+id/tvAmountDetails"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:gravity="center"
-            android:text="99999.99"
-            android:textColor="@color/black"
-            android:textSize="35sp"
-
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvTypeDetails"
+            android:id="@+id/titleDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvAmountDetails"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_below="@id/toolbar"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/poppinsmedium"
-            android:gravity="center"
-            android:text="Expense/Income"
-            android:textColor="#606060"
-            android:textSize="15sp" />
+            android:text="Transaction\nDetails"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
+
     <RelativeLayout
+        android:id="@+id/information"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/amountRelative"
-        >
+        android:layout_below="@+id/transactionDetailsTitle"
+        android:background="@color/white"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="80dp">
+
+        <TextView
+            android:id="@+id/titleInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Transaction Information"
+            android:textColor="#606060"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvTitleDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_below="@id/titleInformation"
+            android:layout_marginTop="20dp"
             android:drawableStart="@drawable/ic_baseline_title_36"
             android:drawablePadding="25dp"
             android:gravity="center_vertical"
             android:text="Title"
             android:textColor="#606060"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsmedium"/>
 
         <TextView
             android:id="@+id/tvCategoryDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTitleDetails"
-            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_format_list_bulleted_36"
             android:drawablePadding="25dp"
             android:gravity="center_vertical"
             android:text="Category"
             android:textColor="#606060"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/tvDateDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvCategoryDetails"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            android:drawableStart="@drawable/ic_baseline_calendar_month_36"
-            android:drawablePadding="25dp"
-            android:gravity="center_vertical"
-            android:text="01/01/2002"
-            android:textColor="#606060"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsmedium"/>
 
         <TextView
             android:id="@+id/noteTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvDateDetails"
-            android:layout_marginHorizontal="20dp"
+            android:layout_below="@id/tvCategoryDetails"
             android:layout_marginTop="30dp"
             android:drawableStart="@drawable/ic_baseline_notes_24"
             android:drawablePadding="25dp"
+            android:fontFamily="@font/poppinsmedium"
             android:gravity="center_vertical"
             android:text="Note :"
             android:textColor="#606060"
@@ -165,13 +126,91 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/noteTitle"
-            android:layout_marginLeft="82dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="59dp"
             android:drawablePadding="25dp"
+            android:fontFamily="@font/poppinsmedium"
             android:gravity="center_vertical"
             android:text="Notes here..."
-            android:textColor="#606060"
+            android:textColor="#939393"
             android:textSize="18sp" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/information"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="-50dp"
+        android:background="@drawable/bg_rounded_amount"
+        android:elevation="8dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/ic_calc_note_svgrepo_com" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/tvDateDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="center_vertical"
+                android:text="01 January 2002"
+                android:textColor="#606060"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTypeDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvDateDetails"
+                android:layout_marginTop="-5dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="start"
+                android:text="Expense Transaction"
+                android:textColor="#474747"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/amountTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTypeDetails"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Amount :"
+                android:textColor="#979797"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvAmountDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/amountTitle"
+                android:layout_marginTop="-5dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:gravity="start"
+                android:text="99999.99"
+                android:textColor="#515151"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

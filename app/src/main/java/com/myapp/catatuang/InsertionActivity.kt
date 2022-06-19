@@ -2,9 +2,11 @@ package com.myapp.catatuang
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -21,7 +23,10 @@ class InsertionActivity : AppCompatActivity() {
     private lateinit var etDate: EditText
     private lateinit var btnSaveData: Button
     private lateinit var radioGroup: RadioGroup
+    private lateinit var rbExpense: RadioButton
+    private lateinit var rbIncome: RadioButton
     private lateinit var etNote: EditText
+    private lateinit var toolbarLinear: LinearLayout
     private var type: Int = 1 //expense is the default value
     private var amount: Double = 0.0
     private var date: Long = 0
@@ -41,15 +46,7 @@ class InsertionActivity : AppCompatActivity() {
         }
         //--------
 
-        //---Initialize item---
-        etTitle = findViewById(R.id.title)
-        etCategory = findViewById(R.id.category)
-        etAmount = findViewById(R.id.amount)
-        etDate = findViewById(R.id.date)
-        btnSaveData = findViewById(R.id.saveButton)
-        radioGroup = findViewById(R.id.typeRadioGroup)
-        etNote = findViewById(R.id.note)
-        //--------
+        initItem()
 
         // --Initialize Firebase Auth and firebase database--
         val user = Firebase.auth.currentUser
@@ -84,10 +81,12 @@ class InsertionActivity : AppCompatActivity() {
             etCategory.text.clear() //clear the category autocompletetextview when the type changes
             if (checkedID == R.id.rbExpense) {
                 type = 1 //expense
+                setBackgroundColor()
                 etCategory.setAdapter(expenseAdapter) //if expense type selected, the set list expense array in category menu
             }
             if (checkedID == R.id.rbIncome){
                 type = 2 //income
+                setBackgroundColor()
 
                 //if expense type selected, the set list income array in category menu :
                 val listIncome = ArrayList<String>()
@@ -114,6 +113,35 @@ class InsertionActivity : AppCompatActivity() {
         btnSaveData.setOnClickListener {
             saveTransactionData()
         }
+    }
+
+    private fun setBackgroundColor() {
+        if (type == 1){
+            rbExpense.setBackgroundResource(R.drawable.radio_selected_expense)
+            rbIncome.setBackgroundResource(R.drawable.radio_not_selected)
+            toolbarLinear.setBackgroundResource(R.drawable.bg_insert_expense)
+            btnSaveData.backgroundTintList = getColorStateList(R.color.orangePrimary)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.orangePrimary)
+        }else{
+            rbIncome.setBackgroundResource(R.drawable.radio_selected_income)
+            rbExpense.setBackgroundResource(R.drawable.radio_not_selected)
+            toolbarLinear.setBackgroundResource(R.drawable.bg_insert_income)
+            btnSaveData.backgroundTintList = getColorStateList(R.color.toscaSecondary)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.toscaSecondary)
+        }
+    }
+
+    private fun initItem() {
+        etTitle = findViewById(R.id.title)
+        etCategory = findViewById(R.id.category)
+        etAmount = findViewById(R.id.amount)
+        etDate = findViewById(R.id.date)
+        btnSaveData = findViewById(R.id.saveButton)
+        radioGroup = findViewById(R.id.typeRadioGroup)
+        rbExpense = findViewById(R.id.rbExpense)
+        rbIncome = findViewById(R.id.rbIncome)
+        etNote = findViewById(R.id.note)
+        toolbarLinear = findViewById(R.id.toolbarLinear)
     }
 
     private fun clickDatePicker() {
@@ -164,11 +192,7 @@ class InsertionActivity : AppCompatActivity() {
             dbRef.child(transactionID).setValue(transaction)
                 .addOnCompleteListener {
                     Toast.makeText(this, "Data Inserted Successfully", Toast.LENGTH_LONG).show()
-
-                    Intent(this, MainActivity::class.java).also {
-                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK //tujuan flag agar tidak bisa menggunakan back
-                        startActivity(it)
-                    }
+                    finish()
                 }.addOnFailureListener { err ->
                     Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
                 }

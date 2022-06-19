@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
@@ -22,6 +23,7 @@ class TransactionDetails : AppCompatActivity() {
     private lateinit var tvDateDetails: TextView
     private lateinit var tvNoteDetails: TextView
     private lateinit var tvCategoryDetails: TextView
+    private lateinit var detailsTitle: RelativeLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +31,8 @@ class TransactionDetails : AppCompatActivity() {
 
         //---back button---
         val backButton: ImageButton = findViewById(R.id.backBtn)
-
         backButton.setOnClickListener {
-            Intent(this, MainActivity::class.java).also {
-                it.flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK //tujuan flag agar tidak bisa menggunakan back
-                startActivity(it)
-            }
+            finish()
         }
         //--------
 
@@ -48,7 +45,13 @@ class TransactionDetails : AppCompatActivity() {
         }
         //------
 
-        //--delete data--
+        deleteData()
+
+        initView() //call method for initialized each ui item
+        setValuesToViews() //call method for output the value on db
+    }
+
+    private fun deleteData() {
         val deleteData: ImageButton = findViewById(R.id.deleteData)
         val alertBox = AlertDialog.Builder(this)
         deleteData.setOnClickListener {
@@ -62,10 +65,6 @@ class TransactionDetails : AppCompatActivity() {
             alertBox.setNegativeButton("No") { _: DialogInterface, _: Int -> }
             alertBox.show()
         }
-        //------
-
-        initView() //call method for initialized each ui item
-        setValuesToViews() //call method for output the value on db
     }
 
     private fun deleteRecord(transactionID: String) {
@@ -78,12 +77,7 @@ class TransactionDetails : AppCompatActivity() {
 
             mTask.addOnSuccessListener {
                 Toast.makeText(this, "Transaction Data Deleted", Toast.LENGTH_LONG).show()
-                Intent(this, MainActivity::class.java).also {
-                    it.flags =
-                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK //tujuan flag agar tidak bisa menggunakan back
-                    finish()
-                    startActivity(it)
-                }
+                finish()
             }.addOnFailureListener { error ->
                 Toast.makeText(this, "Deleting Err ${error.message}", Toast.LENGTH_LONG).show()
             }
@@ -97,28 +91,29 @@ class TransactionDetails : AppCompatActivity() {
         tvDateDetails = findViewById(R.id.tvDateDetails)
         tvNoteDetails = findViewById(R.id.tvNoteDetails)
         tvCategoryDetails = findViewById(R.id.tvCategoryDetails)
+        detailsTitle = findViewById(R.id.transactionDetailsTitle)
     }
 
     private fun setValuesToViews(){
+
         tvTitleDetails.text =  intent.getStringExtra("title")
-
         val type: Int = intent.getIntExtra("type",0)
-        if (type == 1) {
-            tvTypeDetails.text = "Expense"
-        }else{
-            tvTypeDetails.text = "Income"
-        }
-
         val amount: Double = intent.getDoubleExtra("amount", 0.0)
         tvAmountDetails.text = amount.toString()
-        if (type == 1){
-            tvAmountDetails.setTextColor(Color.RED)
+
+        if (type == 1) {
+            tvTypeDetails.text = "Expense Transaction"
+            tvAmountDetails.setTextColor(Color.parseColor("#ff9f1c"))
+            detailsTitle.setBackgroundResource(R.drawable.bg_details_expense)
         }else{
-            tvAmountDetails.setTextColor(Color.parseColor("#489E4C"))
+            tvTypeDetails.text = "Income Transaction"
+            tvAmountDetails.setTextColor(Color.parseColor("#2ec4b6"))
+            detailsTitle.setBackgroundResource(R.drawable.bg_details_income)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.toscaSecondary)
         }
 
         val date: Long = intent.getLongExtra("date", 0)
-        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH)
         val result = Date(date)
         tvDateDetails.text = simpleDateFormat.format(result)
 

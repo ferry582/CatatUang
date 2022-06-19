@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="600dp"
+        android:layout_height="530dp"
         android:background="@color/white">
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/amountTIL"
@@ -129,11 +128,11 @@
             android:layout_below="@+id/noteTIL"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_button"
+            android:paddingHorizontal="30dp"
             android:text="Update"
             android:textColor="@color/white"
-            android:textSize="15sp"
-            android:background="@drawable/rounded_button"
-            android:paddingHorizontal="30dp"/>
+            android:textSize="15sp" />
 
 
     </RelativeLayout>
