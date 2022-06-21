@@ -108,7 +108,7 @@ class AccountFragment : Fragment() {
     }
 
     private fun chartMenu() {
-        var chartMenuRadio: RadioGroup = requireView().findViewById(R.id.RadioGroup)
+        val chartMenuRadio: RadioGroup = requireView().findViewById(R.id.RadioGroup)
         val pieChart: PieChart = requireView().findViewById(R.id.pieChart)
         val barChart: BarChart = requireView().findViewById(R.id.barChart)
 

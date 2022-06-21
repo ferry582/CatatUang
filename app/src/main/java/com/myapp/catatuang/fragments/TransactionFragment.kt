@@ -35,6 +35,9 @@ class TransactionFragment : Fragment() {
     private var param2: String? = null
     private lateinit var transactionRecyclerView: RecyclerView
     private lateinit var tvNoData: TextView
+    private lateinit var noDataImage: ImageView
+    private lateinit var tvNoDataTitle: TextView
+    private lateinit var tvVisibilityNoData: TextView
     private lateinit var loadingRecyclerView: ProgressBar
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var transactionList: ArrayList<TransactionModel>
@@ -70,12 +73,12 @@ class TransactionFragment : Fragment() {
 
         visibilityOptions() //visibility option spinner
 
+        initializeItems()
+
         //--Recycler View transaction items--
         transactionRecyclerView = view.findViewById(R.id.rvTransaction)
         transactionRecyclerView.layoutManager = LinearLayoutManager(this.activity)
         transactionRecyclerView.setHasFixedSize(true)
-        tvNoData = view.findViewById(R.id.tvNoData)
-        loadingRecyclerView = view.findViewById(R.id.progressBar)
 
         transactionList = arrayListOf<TransactionModel>()
 
@@ -89,11 +92,19 @@ class TransactionFragment : Fragment() {
         //----
     }
 
+    private fun initializeItems() {
+        tvNoData = requireView().findViewById(R.id.tvNoData)
+        noDataImage = requireView().findViewById(R.id.noDataImage)
+        tvNoDataTitle = requireView().findViewById(R.id.tvNoDataTitle)
+        tvVisibilityNoData = requireView().findViewById(R.id.visibilityNoData)
+        loadingRecyclerView = requireView().findViewById(R.id.progressBar)
+    }
+
     private fun showUserName() {
         user?.reload()
         val tvUserName: TextView = requireView().findViewById(R.id.userNameTV)
         val email = user!!.email
-        val userName = user!!.displayName
+        val userName = user.displayName
 
 
         val name = if (userName == null || userName == ""){
@@ -179,11 +190,12 @@ class TransactionFragment : Fragment() {
     }
 
     private fun getTransactionData() {
-        val tvVisibilityNoData: TextView = requireView().findViewById(R.id.visibilityNoData)
+        loadingRecyclerView.visibility = View.VISIBLE
         tvVisibilityNoData.visibility = View.GONE
         transactionRecyclerView.visibility = View.GONE //hide the recycler view
-        loadingRecyclerView.visibility = View.VISIBLE
         tvNoData.visibility = View.GONE
+        noDataImage.visibility = View.GONE
+        tvNoDataTitle.visibility = View.GONE
 
         val uid = user?.uid //get user id from database
         if (uid != null) {
@@ -241,32 +253,36 @@ class TransactionFragment : Fragment() {
                     }
 
                     if (transactionList.isEmpty()){ //if there is no data being displayed
+                        noDataImage.visibility = View.VISIBLE
+                        tvNoDataTitle.visibility = View.VISIBLE
                         tvVisibilityNoData.visibility = View.VISIBLE
                         tvVisibilityNoData.text = "There is no $selectedType data $selectedTimeSpan"
+                    }else{
+                        val mAdapter = TransactionAdapter(transactionList)
+                        transactionRecyclerView.adapter = mAdapter
+
+                        mAdapter.setOnItemClickListener(object: TransactionAdapter.onItemClickListener{ //item click listener and pass extra data
+                            override fun onItemClick(position: Int) {
+                                val intent = Intent(this@TransactionFragment.activity, TransactionDetails::class.java)
+
+                                //put extras
+                                intent.putExtra("transactionID", transactionList[position].transactionID)
+                                intent.putExtra("type", transactionList[position].type)
+                                intent.putExtra("title", transactionList[position].title)
+                                intent.putExtra("category", transactionList[position].category)
+                                intent.putExtra("amount", transactionList[position].amount)
+                                intent.putExtra("date", transactionList[position].date)
+                                intent.putExtra("note", transactionList[position].note)
+                                startActivity(intent)
+                            }
+                        })
+                        transactionRecyclerView.visibility = View.VISIBLE
                     }
-
-                    val mAdapter = TransactionAdapter(transactionList)
-                    transactionRecyclerView.adapter = mAdapter
-
-                    mAdapter.setOnItemClickListener(object: TransactionAdapter.onItemClickListener{ //item click listener and pass extra data
-                        override fun onItemClick(position: Int) {
-                            val intent = Intent(this@TransactionFragment.activity, TransactionDetails::class.java)
-
-                        //put extras
-                            intent.putExtra("transactionID", transactionList[position].transactionID)
-                            intent.putExtra("type", transactionList[position].type)
-                            intent.putExtra("title", transactionList[position].title)
-                            intent.putExtra("category", transactionList[position].category)
-                            intent.putExtra("amount", transactionList[position].amount)
-                            intent.putExtra("date", transactionList[position].date)
-                            intent.putExtra("note", transactionList[position].note)
-                            startActivity(intent)
-                        }
-                    })
                     loadingRecyclerView.visibility = View.GONE
-                    transactionRecyclerView.visibility = View.VISIBLE
                 }else{
                     loadingRecyclerView.visibility = View.GONE
+                    noDataImage.visibility = View.VISIBLE
+                    tvNoDataTitle.visibility = View.VISIBLE
                     tvNoData.visibility = View.VISIBLE
                 }
             }

@@ -1,8 +1,6 @@
 package com.myapp.catatuang
 
 import android.app.DatePickerDialog
-import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -13,7 +11,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import java.util.*
-import kotlin.collections.ArrayList
 
 class InsertionActivity : AppCompatActivity() {
 
@@ -59,19 +56,7 @@ class InsertionActivity : AppCompatActivity() {
 
         //---category menu dropdown---
         etCategory = findViewById(R.id.category)
-        val listExpense = ArrayList<String>()
-        listExpense.add("Food/Beverage")
-        listExpense.add("Transportation")
-        listExpense.add("Entertainment")
-        listExpense.add("Education")
-        listExpense.add("Bills")
-        listExpense.add("Shopping")
-        listExpense.add("Communication")
-        listExpense.add("Investment")
-        listExpense.add("Health")
-        listExpense.add("Other Expense")
-
-
+        val listExpense = CategoryOptions.expenseCategory() //getting the arrayList data from CategoryOptions file
         val expenseAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listExpense)
         etCategory.setAdapter(expenseAdapter)
         //------
@@ -89,12 +74,7 @@ class InsertionActivity : AppCompatActivity() {
                 setBackgroundColor()
 
                 //if expense type selected, the set list income array in category menu :
-                val listIncome = ArrayList<String>()
-                listIncome.add("Salary")
-                listIncome.add("Award")
-                listIncome.add("Gift")
-                listIncome.add("Investment Return")
-                listIncome.add("Other Income")
+                val listIncome = CategoryOptions.incomeCategory()
                 val incomeAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listIncome)
                 etCategory.setAdapter(incomeAdapter)
             }

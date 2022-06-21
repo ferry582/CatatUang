@@ -129,6 +129,60 @@
                     />
             </androidx.cardview.widget.CardView>
 
+            <ImageView
+                android:id="@+id/noDataImage"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/pullIcon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:src="@drawable/ic_no_data_amico"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tvNoDataTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/noDataImage"
+                android:text="No Transaction Yet!"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="#191919"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppinsmedium"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/tvNoData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNoDataTitle"
+                android:text="You can add transaction below"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="#B3B3B3"
+                android:fontFamily="@font/poppinsmedium"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/visibilityNoData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNoDataTitle"
+                android:text="There is no All Type transaction\nat This Month"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="#B3B3B3"
+                android:fontFamily="@font/poppinsmedium"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true" />
+
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipeRefresh"
                 android:layout_width="match_parent"
@@ -150,32 +204,6 @@
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/tvNoData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No transaction yet,\nadd transaction below."
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="#B3B3B3"
-        android:fontFamily="@font/poppinsmedium"
-        android:visibility="gone"
-        android:layout_gravity="center"
-        android:layout_centerInParent="true"/>
-
-    <TextView
-        android:id="@+id/visibilityNoData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="There is no All Type transaction\nat This Month"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="#B3B3B3"
-        android:fontFamily="@font/poppinsmedium"
-        android:visibility="gone"
-        android:layout_gravity="center"
-        android:layout_centerInParent="true"/>
-
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="60dp"
@@ -183,5 +211,4 @@
         android:layout_gravity="center"
         android:visibility="gone"
         />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

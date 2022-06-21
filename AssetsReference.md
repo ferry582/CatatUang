@@ -6,6 +6,8 @@
   [Local Path](/app/src/main/res/drawable/ic_mobile_login_amico.xml)<br />
 * Forgot Password Illustration: https://www.freepik.com/free-vector/forgot-password-concept-illustration_7070628.htm <br />
   [Local Path](/app/src/main/res/drawable/ic_forgot_password_amico.xml)<br />
+* No Data Illustration: https://storyset.com/illustration/no-data/amico <br />
+  [Local Path](/app/src/main/res/drawable/ic_no_data_amico.xml)<br />
 * Money Out Icon : https://www.svgrepo.com/svg/15483/money <br />
   [Local Path](/app/src/main/res/drawable/ic_moneyout_svgrepo_com.xml)<br />
 * Money In Icon : https://www.svgrepo.com/svg/16099/cash-machine <br />
