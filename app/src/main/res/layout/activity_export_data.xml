@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExportData">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/ic_baseline_clear_24"
+            android:backgroundTint="#6E6E6E" />
+
+    </Toolbar>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:src="@drawable/ic_spreadsheets_amico" />
+
+    <TextView
+        android:id="@+id/exportTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppinsbold"
+        android:gravity="left"
+        android:text="Export To Excel"
+        android:textColor="#37474f"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/exportDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/exportTitle"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:gravity="left"
+        android:text="Select the date range below for the transaction you want to export"
+        android:textColor="#7E7E7E"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:id="@+id/dateRangeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/exportDesc"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="36dp">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_baseline_calendar_month_24" />
+
+        <EditText
+            android:id="@+id/dateRangeEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:focusable="false"
+            android:hint="00/00/0000 - 99/99/9999"
+            android:inputType="textEmailAddress"
+            android:paddingVertical="18dp"
+            android:textColor="@color/black"
+            android:textColorHint="#787878"
+            app:backgroundTint="#21000000" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/exportBtn"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/dateRangeLayout"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:paddingTop="7dp"
+        android:paddingRight="33dp"
+        android:text="Export"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:backgroundTint="#ff9f1c"
+        app:cornerRadius="13dp"
+        app:icon="@drawable/ic_excel_file_svgrepo_com"
+        app:iconPadding="10dp"
+        app:iconTint="#00100D0D"
+        app:iconTintMode="src_atop" />
+
+</RelativeLayout>

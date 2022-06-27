@@ -23,23 +23,43 @@
                 android:background="@drawable/bg_transaction_fragment"
                 app:layout_collapseMode="parallax">
 
-                <TextView
-                    android:id="@+id/userNameTV"
+                <Toolbar
+                    android:id="@+id/topBarLinear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:text="Hi, Ferry!"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp">
+
+                    <TextView
+                        android:id="@+id/userNameTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="17dp"
+                        android:fontFamily="@font/poppinsbold"
+                        android:text="Hi, Ferry!"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
+
+                    <ImageButton
+                        android:id="@+id/exportButton"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="right"
+                        android:layout_marginEnd="14dp"
+                        android:backgroundTint="#00FFFFFF"
+                        android:src="@drawable/ic_file_export_svgrepo_com" />
+
+                </Toolbar>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/userNameTV"
+                    android:layout_below="@id/topBarLinear"
                     android:layout_marginHorizontal="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:layout_marginBottom="18dp"
                     android:background="@drawable/rounded_transaction_fragment">
 

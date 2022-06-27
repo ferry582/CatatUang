@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -31,6 +32,11 @@ class InsertionActivity : AppCompatActivity() {
 
     private lateinit var dbRef: DatabaseReference //initialize database
     private lateinit var auth: FirebaseAuth
+
+    //to prevent user input the data more than one,
+    //the problem usually occur when the network is offline (this app haven't support offline Db),
+    //where the user hit the save button multiple times
+    private var isSubmitted: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,8 +96,14 @@ class InsertionActivity : AppCompatActivity() {
         }
         //----
 
+
         btnSaveData.setOnClickListener {
-            saveTransactionData()
+            if (!isSubmitted){
+                saveTransactionData()
+            }else{
+                Snackbar.make(findViewById(android.R.id.content), "You have saved the transaction data", Snackbar.LENGTH_LONG).show()
+            }
+
         }
     }
 
@@ -176,6 +188,8 @@ class InsertionActivity : AppCompatActivity() {
                 }.addOnFailureListener { err ->
                     Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_LONG).show()
                 }
+
+            isSubmitted = true
         }
     }
 }

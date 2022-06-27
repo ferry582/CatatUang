@@ -41,6 +41,7 @@ class TransactionFragment : Fragment() {
     private lateinit var loadingRecyclerView: ProgressBar
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var transactionList: ArrayList<TransactionModel>
+    private lateinit var exportButton: ImageButton
     private lateinit var dbRef: DatabaseReference
     private val user = Firebase.auth.currentUser
     private lateinit var typeOption: Spinner
@@ -69,11 +70,14 @@ class TransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initializeItems()
+
         showUserName()
+
+        exportButtonClicked()
 
         visibilityOptions() //visibility option spinner
 
-        initializeItems()
 
         //--Recycler View transaction items--
         transactionRecyclerView = view.findViewById(R.id.rvTransaction)
@@ -92,12 +96,20 @@ class TransactionFragment : Fragment() {
         //----
     }
 
+    private fun exportButtonClicked() {
+        exportButton.setOnClickListener {
+            val intent = Intent(this@TransactionFragment.activity, ExportData::class.java)
+            startActivity(intent)
+        }
+    }
+
     private fun initializeItems() {
         tvNoData = requireView().findViewById(R.id.tvNoData)
         noDataImage = requireView().findViewById(R.id.noDataImage)
         tvNoDataTitle = requireView().findViewById(R.id.tvNoDataTitle)
         tvVisibilityNoData = requireView().findViewById(R.id.visibilityNoData)
         loadingRecyclerView = requireView().findViewById(R.id.progressBar)
+        exportButton = requireView().findViewById(R.id.exportButton)
     }
 
     private fun showUserName() {
@@ -209,7 +221,7 @@ class TransactionFragment : Fragment() {
                     when (selectedType) {
                         "All Type" -> { //all option selected
                             for (transactionSnap in snapshot.children){
-                                val     transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
+                                val transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
                                 if (selectedTimeSpan == "All Time"){
                                     transactionList.add(transactionData!!)
                                 }else{
@@ -222,7 +234,7 @@ class TransactionFragment : Fragment() {
                         }
                         "Expense" -> { //expense option selected
                             for (transactionSnap in snapshot.children){
-                                val     transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
+                                val transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
                                 if (transactionData!!.type == 1){ //expense type
                                     if (selectedTimeSpan == "All Time"){
                                         transactionList.add(transactionData)
@@ -237,7 +249,7 @@ class TransactionFragment : Fragment() {
                         }
                         "Income" -> {
                             for (transactionSnap in snapshot.children){
-                                val     transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
+                                val transactionData = transactionSnap.getValue(TransactionModel::class.java) //reference data class
                                 if (transactionData!!.type == 2){ //income type
                                     if (selectedTimeSpan == "All Time"){
                                         transactionList.add(transactionData)
@@ -279,7 +291,7 @@ class TransactionFragment : Fragment() {
                         transactionRecyclerView.visibility = View.VISIBLE
                     }
                     loadingRecyclerView.visibility = View.GONE
-                }else{
+                }else{ //if there is no data in database
                     loadingRecyclerView.visibility = View.GONE
                     noDataImage.visibility = View.VISIBLE
                     tvNoDataTitle.visibility = View.VISIBLE

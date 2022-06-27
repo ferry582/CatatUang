@@ -30,6 +30,7 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.126" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_format_list_bulleted_36.xml" value="0.19" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_insert_chart_24.xml" value="0.2055" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_ios_share_24.xml" value="0.124" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_lock_open_24.xml" value="0.115" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_notes_24.xml" value="0.19" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.154" />
@@ -41,6 +42,10 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_calendar_svgrepo_com.xml" value="0.106" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_catat_uang_icon.xml" value="0.149" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_coins_svgrepo_com.xml" value="0.149" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_excel_file_svgrepo_com.xml" value="0.124" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_excel_svgrepo_com.xml" value="0.124" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_export_svgrepo_com.xml" value="0.124" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_file_export_svgrepo_com.xml" value="0.124" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_forgot_password_amico.xml" value="0.124" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_icon_date.xml" value="0.106" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_launcher_background.xml" value="0.154" />
@@ -50,6 +55,7 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_moneyout_svgrepo_com.xml" value="0.149" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_no_data_amico.xml" value="0.124" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_not_verified_svgrepo_com.xml" value="0.167" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_spreadsheets_amico.xml" value="0.124" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_verified_svgrepo_com.xml" value="0.167" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_verified_ui_shield_svgrepo_com.xml" value="0.167" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/logout_button.xml" value="0.16" />
@@ -65,6 +71,7 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/spinner_rounded.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1285140562248996" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout-w936dp/activity_login.xml" value="0.15" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_export_data.xml" value="0.18703703703703703" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_insertion.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_login.xml" value="0.22" />

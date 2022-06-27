@@ -17,13 +17,17 @@
         <Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp">
 
             <ImageButton
                 android:id="@+id/backBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="15dp"
                 android:background="@drawable/ic_baseline_clear_24" />
 
         </Toolbar>

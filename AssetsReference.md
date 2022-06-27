@@ -8,6 +8,8 @@
   [Local Path](/app/src/main/res/drawable/ic_forgot_password_amico.xml)<br />
 * No Data Illustration: https://storyset.com/illustration/no-data/amico <br />
   [Local Path](/app/src/main/res/drawable/ic_no_data_amico.xml)<br />
+* Spreadsheet Illustration: https://storyset.com/illustration/spreadsheets/amico <br />
+  [Local Path](/app/src/main/res/drawable/ic_spreadsheets_amico.xml)<br />
 * Money Out Icon : https://www.svgrepo.com/svg/15483/money <br />
   [Local Path](/app/src/main/res/drawable/ic_moneyout_svgrepo_com.xml)<br />
 * Money In Icon : https://www.svgrepo.com/svg/16099/cash-machine <br />
@@ -20,3 +22,7 @@
   [Local Path](/app/src/main/res/drawable/ic_verified_svgrepo_com.xml)<br />
 * Calendar Icon : https://www.svgrepo.com/svg/22156/calendar<br />
   [Local Path](/app/src/main/res/drawable/ic_calendar_svgrepo_com.xml)<br />
+* File Export Icon : https://www.svgrepo.com/svg/357752/file-export<br />
+  [Local Path](/app/src/main/res/drawable/ic_file_export_svgrepo_com.xml)<br />
+* Excel File Icon : https://www.svgrepo.com/svg/79506/excel-file<br />
+  [Local Path](/app/src/main/res/drawable/ic_excel_file_svgrepo_com.xml)<br />
