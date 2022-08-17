@@ -402,6 +402,15 @@ class AccountFragment : Fragment() {
         return "$result1 - $result2"
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        showAllTimeRecap() //show all time recap text
+        setupPieChart()
+        setupBarChart()
+    }
+
+
     companion object {
         /**
          * Use this factory method to create a new instance of
