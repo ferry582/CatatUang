@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
@@ -38,7 +39,7 @@ class TransactionFragment : Fragment() {
     private lateinit var noDataImage: ImageView
     private lateinit var tvNoDataTitle: TextView
     private lateinit var tvVisibilityNoData: TextView
-    private lateinit var loadingRecyclerView: ProgressBar
+    private lateinit var shimmerLoading: ShimmerFrameLayout
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var transactionList: ArrayList<TransactionModel>
     private lateinit var exportButton: ImageButton
@@ -108,7 +109,7 @@ class TransactionFragment : Fragment() {
         noDataImage = requireView().findViewById(R.id.noDataImage)
         tvNoDataTitle = requireView().findViewById(R.id.tvNoDataTitle)
         tvVisibilityNoData = requireView().findViewById(R.id.visibilityNoData)
-        loadingRecyclerView = requireView().findViewById(R.id.progressBar)
+        shimmerLoading = requireView().findViewById(R.id.shimmerFrameLayout)
         exportButton = requireView().findViewById(R.id.exportButton)
     }
 
@@ -202,7 +203,8 @@ class TransactionFragment : Fragment() {
     }
 
     private fun getTransactionData() {
-        loadingRecyclerView.visibility = View.VISIBLE
+        shimmerLoading.startShimmerAnimation()
+        shimmerLoading.visibility = View.VISIBLE
         tvVisibilityNoData.visibility = View.GONE
         transactionRecyclerView.visibility = View.GONE //hide the recycler view
         tvNoData.visibility = View.GONE
@@ -290,9 +292,12 @@ class TransactionFragment : Fragment() {
                         })
                         transactionRecyclerView.visibility = View.VISIBLE
                     }
-                    loadingRecyclerView.visibility = View.GONE
+                    shimmerLoading.stopShimmerAnimation()
+                    shimmerLoading.visibility = View.GONE
                 }else{ //if there is no data in database
-                    loadingRecyclerView.visibility = View.GONE
+                    shimmerLoading.stopShimmerAnimation()
+                    shimmerLoading.visibility = View.GONE
+
                     noDataImage.visibility = View.VISIBLE
                     tvNoDataTitle.visibility = View.VISIBLE
                     tvNoData.visibility = View.VISIBLE

@@ -50,6 +50,7 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_icon_date.xml" value="0.106" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_launcher_background.xml" value="0.154" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_mobile_login_amico.xml" value="0.124" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_money_grey.xml" value="0.124" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_moneyin_svgrepo_com.xml" value="0.149" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_moneyout_icon.xml" value="0.149" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/ic_moneyout_svgrepo_com.xml" value="0.149" />
@@ -69,8 +70,10 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/rounded_date_button.xml" value="0.2055" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/rounded_transaction_fragment.xml" value="0.126" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/spinner_rounded.xml" value="0.154" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/drawable/tv_skeleton_loading.xml" value="0.124" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1285140562248996" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout-w936dp/activity_login.xml" value="0.15" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout-w936dp/shimmer_layout.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_export_data.xml" value="0.18703703703703703" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_insertion.xml" value="0.16666666666666666" />
@@ -80,11 +83,13 @@
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/activity_transaction_details.xml" value="0.2" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/fragment_account.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/fragment_profile.xml" value="0.12092391304347826" />
-        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/fragment_transaction.xml" value="0.22" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/fragment_transaction.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/selected_spinner.xml" value="0.2" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/selected_spinner_list.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/shimmer_placeholder_layout.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/spinner_list.xml" value="0.2" />
-        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/transaction_list_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/test.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/transaction_list_item.xml" value="0.22" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/layout/update_dialog.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
         <entry key="..\:/Users/antaf/AndroidStudioProjects/CatatUang/app/src/main/res/menu/nav_menu.xml" value="0.2" />

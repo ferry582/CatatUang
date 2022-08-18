@@ -45,7 +45,7 @@ class AccountFragment : Fragment() {
 
     // Initialize Firebase Auth and database
     private var auth: FirebaseAuth = Firebase.auth
-    var user = Firebase.auth.currentUser
+    private var user = Firebase.auth.currentUser
     private val uid = user?.uid //get user id from database
     private var dbRef: DatabaseReference = FirebaseDatabase.getInstance().getReference(uid!!)
 
@@ -55,8 +55,8 @@ class AccountFragment : Fragment() {
     var allTimeExpense: Double = 0.0
     var allTimeIncome: Double = 0.0
 
-    var dateStart: Long = 0
-    var dateEnd: Long = 0
+    private var dateStart: Long = 0
+    private var dateEnd: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
